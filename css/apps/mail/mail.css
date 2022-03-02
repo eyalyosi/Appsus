@@ -1,0 +1,16 @@
+.mail-list li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid black;
+}
+
+.single-mail div{
+    display: inline-block;
+}
+
+.mail-list li:hover {
+background-color: lightgray;
+
+}
+
