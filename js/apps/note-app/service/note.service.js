@@ -5,6 +5,8 @@ export const noteService = {
   remove,
   getNotes,
   createNote,
+  get,
+  changeNoteColor,
 };
 const KEY_NOTE = "notes";
 var gNotes = utilService.loadFromStorage(KEY_NOTE) || [];
@@ -14,6 +16,7 @@ function getNotes() {
     gNotes = [
       {
         id: "n101",
+        color:'red',
         type: "note-txt",
         isPinned: false,
         info: {
@@ -22,6 +25,7 @@ function getNotes() {
       },
       {
         id: "n102",
+        color:'red',
         type: "note-img",
         isPinned: false,
         info: {
@@ -31,6 +35,7 @@ function getNotes() {
       },
       {
         id: "n103",
+        color:'red',
         type: "note-todos",
         isPinned: false,
         info: {
@@ -56,10 +61,24 @@ function remove(noteId) {
 function createNote(txt ,type='txt') {
 const note = {
   id: utilService.makeId(),
+  color:blue,
   type,
   info: {
     txt
   }
 }
 return storageService.post(KEY_NOTE,note)
+}
+
+function get(noteId) {
+  return storageService.get(KEY_NOTE, noteId)
+  .then(note => {
+    return note;
+      // return _setNextPrevCarId(car)
+  })
+}
+
+function changeNoteColor(note) {
+  return storageService.put(KEY_NOTE,note)
+  .then(note => note)
 }

@@ -6,9 +6,10 @@ export default {
 <section class="note-list">
     <input v-model="newNote"  type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
     <ul class="flex evenly wrap">
-        <li v-for="note in notes" class="clean-list blue">
+        <li v-for="note in notes" class="clean-list " style="Color:'red'">
             <button @click="remove(note.id)">X</button>
             <note-preview :note="note" />
+            <input v-model="color" type="color" @change="noteColor(note)">
         </li>
      </ul>
 
@@ -16,23 +17,28 @@ export default {
 `,
   components: {
     notePreview,
-    newNote:''
+    nwNote: "",
   },
   data() {
     return {
-        
+      color:'red'
     };
   },
   created() {},
   methods: {
-      remove(id) {
-          this.$emit('remove',id)
-      },
-      addNote(){
-        this.$emit('add',this.newNote)
-        // this.newNote = ''
-      },
-        
+    remove(id) {
+      this.$emit("remove", id);
+    },
+    addNote() {
+      this.$emit("add", this.nwNote);
+      // this.newNote = ''
+    },
+    noteColor(note) {
+      console.log(this.color);
+      note.color = this.color
+      this.$emit("color",note)
+      // console.log(id);
+    },
   },
   computed: {},
 };
