@@ -15,11 +15,14 @@ export default {
     },
     data() {
         return {
+            mail: null
         }
     },
     methods: {
         selectMail(mail) {
-            console.log(mail);
+            // this.mail = mail
+            // this.mail.isRead = false
+            // console.log(this.mail);
             this.$emit('mail-selected', mail)
         }
     },

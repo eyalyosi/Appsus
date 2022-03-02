@@ -12,7 +12,7 @@ export default {
             <!-- <mail-nav /> -->
             <!-- <mail-filter /> -->
             <mail-folder-list />
-            <mail-details v-if="selectedMail" />
+            <mail-details v-if="selectedMail" :mail="selectedMail"/>
             <mail-list v-else :mails="mails" @mail-selected="setSelectedMail"></mail-list>
     </section>
     `,
@@ -35,7 +35,6 @@ export default {
     methods: {
         setSelectedMail(mail) {
             this.selectedMail = mail
-            console.log(this.selectedMail);
         }
     },
     computed: {
