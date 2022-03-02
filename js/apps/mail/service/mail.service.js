@@ -48,6 +48,7 @@ function getEmptyMail(subject, body ) {
         subject,
         body,
         isRead: false,
+        isStarred: false,
         sentAt: new Date(),
         to: 'momo@momo.com'
     };
@@ -62,6 +63,7 @@ function _createMails() {
                 subject: 'First mail!',
                 body: 'Good luck!',
                 isRead: false,
+                isStarred: false,
                 sentAt: new Date(),
                 to: 'momo@momo.com'
             },
@@ -70,6 +72,7 @@ function _createMails() {
                 subject: 'Second mail!',
                 body: 'Have fun!',
                 isRead: false,
+                isStarred: false,
                 sentAt: new Date(),
                 to: 'momo@momo.com'
             },
@@ -78,10 +81,10 @@ function _createMails() {
                 subject: 'Third mail!',
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 isRead: true,
+                isStarred: false,
                 sentAt: new Date(),
                 to: 'momo@momo.com'
             },
-
         ];
         utilService.saveToStorage(STORAGE_KEY, mails);
     }

@@ -1,7 +1,7 @@
-import mailList from '../cmps/mail-list.cmp.js'
 import { mailService } from '../service/mail.service.js'
-
-
+import mailList from '../cmps/mail-list.cmp.js'
+import mailFilter from '../cmps/mail-filter.cmp.js'
+import mailFolderList from '../cmps/mail-folder-list.cmp.js'
 //TODO: nav bar on the left
 //TODO:
 
@@ -11,13 +11,16 @@ export default {
     <section class="mail-app main-layout">
             <!-- <mail-add />
             <mail-nav />
-            <mail-filter />
             <mail-details /> -->
+            <mail-filter />
+            <mail-folder-list />
             <mail-list :mails="mails"></book-list>
     </section>
     `,
     components: {
         mailList,
+        mailFilter,
+        mailFolderList
     },
     data() {
         return {
