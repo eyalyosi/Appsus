@@ -1,28 +1,32 @@
-import notePreview from './note-preview.cmp.js'
+import notePreview from "./note-preview.cmp.js";
 
 export default {
-    props: ['notes'],
-template:`
+  props: ["notes"],
+  template: `
 <section class="note-list">
-  
+    <input type="text">
     <ul class="flex evenly">
         <li v-for="note in notes" class="clean-list blue">
+            <button @click="remove(note.id)">X</button>
             <note-preview :note="note" />
-
         </li>
      </ul>
 
 </section>
 `,
-components: {
+  components: {
     notePreview,
-},
-data() {
+  },
+  data() {
     return {
-
-    }
-},
-created(){},
-methods:{},
-computed:{},
-}
+        
+    };
+  },
+  created() {},
+  methods: {
+      remove(id) {
+          this.$emit('remove',id)
+      }
+  },
+  computed: {},
+};
