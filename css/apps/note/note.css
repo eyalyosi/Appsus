@@ -1,0 +1,11 @@
+.txt-note {
+    /* flex-basis: 25%; */
+    min-width: 100px;
+    /* min-height: 150px; */
+    padding: 10px;
+}
+
+.blue {
+    background-color: steelblue;
+    
+}
