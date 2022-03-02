@@ -4,20 +4,21 @@ export default {
   props: ["notes"],
   template: `
 <section class="note-list">
-    <input v-model="newNote"  type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
-    <ul class="flex evenly wrap">
-        <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}">
-            <button @click="remove(note.id)">X</button>
-            <note-preview :note="note" />
-            <input v-model="color" type="color" @input="noteColor(note)">
-        </li>
-     </ul>
-
+  <input v-model="note"   type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
+  <pre>x{{note}}x</pre>
+    <!-- <ul class="flex evenly wrap"> -->
+        <!-- <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}"> -->
+            <note-preview @color="noteColor" @remove="remove" :notes="notes" />
+            
+            <!-- <input v-model="color" type="color" @input="noteColor(note)"> -->
+          <!-- </li> -->
+        <!-- </ul> -->
+        
 </section>
 `,
   components: {
     notePreview,
-    nwNote: "",
+    note: null,
   },
   data() {
     return {
@@ -30,14 +31,13 @@ export default {
       this.$emit("remove", id);
     },
     addNote() {
-      this.$emit("add", this.nwNote);
-      // this.newNote = ''
+      // console.log(this.note);
+      this.$emit("add", this.note);
+      this.note = ''
     },
-    noteColor(note) {
-      console.log(this.color);
-      note.color = this.color
-      this.$emit("color",note)
-      console.log(id);
+    noteColor(id,color) {
+      this.$emit("color",id,color)
+
     },
   },
   computed: {},
