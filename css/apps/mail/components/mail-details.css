@@ -1,0 +1,10 @@
+/* mail-details */
+
+.mail-show-container {
+    flex-grow: 1;
+    border: 1px solid black;
+  }
+  
+  .mail-body {
+    padding-left: 50px;
+  }

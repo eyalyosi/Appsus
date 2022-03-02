@@ -50,7 +50,8 @@ function getEmptyMail(subject, body ) {
         isRead: false,
         isStarred: false,
         sentAt: new Date(),
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        from: ''
     };
 }
 
@@ -65,7 +66,8 @@ function _createMails() {
                 isRead: false,
                 isStarred: false,
                 sentAt: new Date(),
-                to: 'momo@momo.com'
+                to: 'momo@momo.com',
+                from: 'eyal@gmail.com'
             },
             {
                 id: utilService.makeId(),
@@ -74,7 +76,8 @@ function _createMails() {
                 isRead: false,
                 isStarred: false,
                 sentAt: new Date(),
-                to: 'momo@momo.com'
+                to: 'momo@momo.com',
+                from: 'yosef@gmail.com'
             },
             {
                 id: utilService.makeId(),
@@ -83,7 +86,68 @@ function _createMails() {
                 isRead: true,
                 isStarred: false,
                 sentAt: new Date(),
-                to: 'momo@momo.com'
+                to: 'momo@momo.com',
+                from: 'lihi@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'First mail!',
+                body: 'Good luck!',
+                isRead: false,
+                isStarred: false,
+                sentAt: new Date(),
+                to: 'momo@momo.com',
+                from: 'eyal@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Second mail!',
+                body: 'Have fun!',
+                isRead: false,
+                isStarred: false,
+                sentAt: new Date(),
+                to: 'momo@momo.com',
+                from: 'yosef@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Third mail!',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                isRead: true,
+                isStarred: false,
+                sentAt: new Date(),
+                to: 'momo@momo.com',
+                from: 'lihi@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'First mail!',
+                body: 'Good luck!',
+                isRead: false,
+                isStarred: false,
+                sentAt: new Date(),
+                to: 'momo@momo.com',
+                from: 'eyal@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Second mail!',
+                body: 'Have fun!',
+                isRead: false,
+                isStarred: false,
+                sentAt: new Date(),
+                to: 'momo@momo.com',
+                from: 'yosef@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Third mail!',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                isRead: true,
+                isStarred: false,
+                sentAt: new Date(),
+                to: 'momo@momo.com',
+                from: 'lihi@gmail.com'
             },
         ];
         utilService.saveToStorage(STORAGE_KEY, mails);

@@ -15,15 +15,15 @@ export default {
     },
     data() {
         return {
+            mail: null
         }
     },
     methods: {
         selectMail(mail) {
-            console.log(mail);
             this.$emit('mail-selected', mail)
         }
     },
     computed: {
-
+        
     }
 }

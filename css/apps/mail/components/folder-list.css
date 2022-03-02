@@ -1,0 +1,13 @@
+/* folder list */
+.mail-folder-list {
+    border: 1px solid black;
+  }
+  
+  .folder-items li {
+    border-top: 1px solid black;
+  }
+  
+  .mail-folder-list > *:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }

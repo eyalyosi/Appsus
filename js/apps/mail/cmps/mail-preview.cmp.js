@@ -1,31 +1,36 @@
+
+//TODO button make unread in mail
 export default {
     props: ['mail'],
     template: `
-            <div class="single-mail flex space" >
-                <div class="mail-to">
-                     {{mail.to}}
-                </div class="mail-title-subject-container">
-                <div>
-                       <span>{{mail.title}}</span>
-                       <span>{{mail.body}}</span>
+            <div class="single-mail flex space" @click="changeToRead()">
+                <div class="mail-to" :class="isRead">
+                         {{mail.from}}
+                </div >
+                <div class="mail-title-subject-container">
+                       <span :class="isRead">{{mail.subject}} - </span>
+                       <span> {{mail.body}}</span>
                 </div>
                 <div>{{mail.sentAt}}</div>
-                    <!-- <router-link to="/mail/selectedMail"></router-link>
-                    <router-view></router-view> -->
             </div>
-          
     `,
     data() {
         return {
-
+            
         }
     },
     created() {
     },
     methods: {
-        
+        changeToRead() {
+            this.mail.isRead = true
+        }
     },
     computed: {
+        isRead() {
+            if (!this.mail.isRead) return { isRead: [this.mail.from , this.mail.subject]}
+
+        },
 
     }
 }
