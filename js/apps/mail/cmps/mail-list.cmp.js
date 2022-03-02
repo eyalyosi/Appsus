@@ -6,7 +6,6 @@ export default {
             <ul class="clean-list">
                 <li v-for="mail in mails" :key="mail.id" class="mail-preview-container">
                     <mail-preview :mail="mail" />
-                    <!-- <router-link :to="'/book/'+book.id">Details</router-link> -->
                 </li>
             </ul>
        </section>
