@@ -6,10 +6,10 @@ export default {
 <section class="note-list">
     <input v-model="newNote"  type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
     <ul class="flex evenly wrap">
-        <li v-for="note in notes" class="clean-list " style="Color:'red'">
+        <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}">
             <button @click="remove(note.id)">X</button>
             <note-preview :note="note" />
-            <input v-model="color" type="color" @change="noteColor(note)">
+            <input v-model="color" type="color" @input="noteColor(note)">
         </li>
      </ul>
 
@@ -37,7 +37,7 @@ export default {
       console.log(this.color);
       note.color = this.color
       this.$emit("color",note)
-      // console.log(id);
+      console.log(id);
     },
   },
   computed: {},

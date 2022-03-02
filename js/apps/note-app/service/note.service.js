@@ -7,6 +7,7 @@ export const noteService = {
   createNote,
   get,
   changeNoteColor,
+  getById
 };
 const KEY_NOTE = "notes";
 var gNotes = utilService.loadFromStorage(KEY_NOTE) || [];
@@ -16,7 +17,7 @@ function getNotes() {
     gNotes = [
       {
         id: "n101",
-        color:'red',
+        color:'rgb(246, 239, 239)',
         type: "note-txt",
         isPinned: false,
         info: {
@@ -25,27 +26,65 @@ function getNotes() {
       },
       {
         id: "n102",
-        color:'red',
+        color:'rgb(246, 239, 239)',
         type: "note-img",
         isPinned: false,
         info: {
           //   url: "https://i.picsum.photos/id/234/200/300.jpg?hmac=KD9xFDCez7-lqgcMm-EEi7BtpClIdCzJS6YvFVyLiDs",
-          txt: "paris",
+          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor inventore delectus assumenda' ,
         },
       },
       {
         id: "n103",
-        color:'red',
+        color:'rgb(246, 239, 239)',
         type: "note-todos",
         isPinned: false,
         info: {
-          txt: "clean",
+          txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, praesentium.',
         },
       },
     ];
   }
   utilService.saveToStorage(KEY_NOTE, gNotes);
   return query(KEY_NOTE).then((notes) => notes);
+}
+
+// test
+// test
+// test
+
+
+function getById() {
+  return Promise.resolve(notes);
+}
+
+var notes = 
+{
+  title: 'keep',
+  cmps: [
+    {
+      type : 'textNote',
+      info: {
+        label: 'Note',
+        txt: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, molestiae.'
+      }
+    },
+    {
+      type : 'textNote',
+      info: {
+        label: 'note',
+        txt: 't consectetur adipisicing elit. Sequi, molestiae.'
+      }
+    },
+    {
+      type : 'textNote',
+      info: {
+        label: 'note',
+        txt: ' adipisicing elit. Sequi, molestiae.'
+      }
+    },
+
+  ]
 }
 
 function query() {
