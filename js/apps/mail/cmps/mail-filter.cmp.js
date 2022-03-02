@@ -1,10 +1,10 @@
 export default {
     template: `
-          <section class="book-filter-container">
-              <form action="" type="submit" class="book-filter">
+          <section class="mail-filter-container">
+              <form action="" type="submit" class="mail-filter">
                     <label>
                         Sarch mail:
-                        <input type="text" v-model="filterBy.bookName" placeholder="search by title / subject/ from / date">
+                        <input type="text" v-model="filterBy" placeholder="search by title / subject/ from / date">
                     </label>
                     <label for="mail-choice">
                         <input list="mail-choice-list" id="mail-choice" name="mail-choice" />

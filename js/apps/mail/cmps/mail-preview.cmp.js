@@ -1,7 +1,7 @@
 export default {
     props: ['mail'],
     template: `
-            <div class="single-mail flex space">
+            <div class="single-mail flex space" >
                 <div class="mail-to">
                      {{mail.to}}
                 </div class="mail-title-subject-container">
@@ -9,8 +9,11 @@ export default {
                        <span>{{mail.title}}</span>
                        <span>{{mail.body}}</span>
                 </div>
-                <div>{{mail. sentAt}}</div>
+                <div>{{mail.sentAt}}</div>
+                    <!-- <router-link to="/mail/selectedMail"></router-link>
+                    <router-view></router-view> -->
             </div>
+          
     `,
     data() {
         return {
@@ -20,6 +23,7 @@ export default {
     created() {
     },
     methods: {
+        
     },
     computed: {
 

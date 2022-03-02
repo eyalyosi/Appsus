@@ -2,29 +2,30 @@ import { mailService } from '../service/mail.service.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailFolderList from '../cmps/mail-folder-list.cmp.js'
-//TODO: nav bar on the left
-//TODO:
+import mailDetails from './mail-details.cmp.js'
 
 export default {
     template: `
     <h1>mail</h1>
-    <section class="mail-app main-layout">
-            <!-- <mail-add />
-            <mail-nav />
-            <mail-details /> -->
-            <mail-filter />
+    <section class="mail-app main-layout flex space">
+            <!-- <mail-add /> -->
+            <!-- <mail-nav /> -->
+            <!-- <mail-filter /> -->
             <mail-folder-list />
-            <mail-list :mails="mails"></book-list>
+            <mail-details v-if="selectedMail" />
+            <mail-list v-else :mails="mails" @mail-selected="setSelectedMail"></mail-list>
     </section>
     `,
     components: {
         mailList,
         mailFilter,
-        mailFolderList
+        mailFolderList,
+        mailDetails
     },
     data() {
         return {
             mails: null,
+            selectedMail: null,
         }
     },
     created() {
@@ -32,7 +33,12 @@ export default {
             .then(mails => this.mails = mails)
     },
     methods: {
+        setSelectedMail(mail) {
+            this.selectedMail = mail
+            console.log(this.selectedMail);
+        }
+    },
+    computed: {
 
     },
-    computed: {},
 }

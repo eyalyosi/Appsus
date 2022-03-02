@@ -2,6 +2,7 @@
 import homePage from './pages/home-page.js'
 import noteApp from './apps/note-app/pages/note-app.cmp.js'
 import mailApp from './apps/mail/pages/mail-app.cmp.js';
+// import mailApp, { selectedMail } from './apps/mail/pages/mail-app.cmp.js';
 // import carEdit from './views/car-edit.cmp.js';
 
 const routes = [
@@ -15,7 +16,13 @@ const routes = [
     },
     {
         path: '/mail',
-        component: mailApp
+        component: mailApp,
+        // children: [
+        //     {
+        //         path: 'selectedMail',
+        //         component: selectedMail
+        //     }
+        // ]
     },
     // {
     //     path: '/about',
