@@ -4,6 +4,7 @@ import { storageService } from "../../../service/async-storage-service.js";
 export const noteService = {
   remove,
   getNotes,
+  createNote,
 };
 const KEY_NOTE = "notes";
 var gNotes = utilService.loadFromStorage(KEY_NOTE) || [];
@@ -50,4 +51,15 @@ function remove(noteId) {
    storageService.remove(KEY_NOTE, noteId)
    return query()
    .then(notes => notes)
+}
+
+function createNote(txt ,type='txt') {
+const note = {
+  id: utilService.makeId(),
+  type,
+  info: {
+    txt
+  }
+}
+return storageService.post(KEY_NOTE,note)
 }

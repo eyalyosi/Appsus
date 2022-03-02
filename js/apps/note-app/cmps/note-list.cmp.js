@@ -4,8 +4,8 @@ export default {
   props: ["notes"],
   template: `
 <section class="note-list">
-    <input type="text">
-    <ul class="flex evenly">
+    <input v-model="newNote"  type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
+    <ul class="flex evenly wrap">
         <li v-for="note in notes" class="clean-list blue">
             <button @click="remove(note.id)">X</button>
             <note-preview :note="note" />
@@ -16,6 +16,7 @@ export default {
 `,
   components: {
     notePreview,
+    newNote:''
   },
   data() {
     return {
@@ -26,7 +27,12 @@ export default {
   methods: {
       remove(id) {
           this.$emit('remove',id)
-      }
+      },
+      addNote(){
+        this.$emit('add',this.newNote)
+        // this.newNote = ''
+      },
+        
   },
   computed: {},
 };
