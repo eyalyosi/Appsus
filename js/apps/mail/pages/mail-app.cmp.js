@@ -11,10 +11,11 @@ export default {
             <!-- <mail-add /> -->
             <!-- <mail-nav /> -->
             <!-- <mail-filter /> -->
-            <mail-folder-list />
+            <mail-folder-list @show-inbox="showInbox" />
             <mail-details v-if="selectedMail" :mail="selectedMail"/>
             <mail-list v-else :mails="mails" @mail-selected="setSelectedMail"></mail-list>
-    </section>
+        <!-- <button @click="puki">puki</button> -->
+        </section>
     `,
     components: {
         mailList,
@@ -26,6 +27,7 @@ export default {
         return {
             mails: null,
             selectedMail: null,
+            unreadMailscount: null
         }
     },
     created() {
@@ -35,9 +37,21 @@ export default {
     methods: {
         setSelectedMail(mail) {
             this.selectedMail = mail
+        },
+        showInbox() {
+            this.selectedMail = null
+        },
+        // puki() {
+        //     console.log(this.mails);
+        //     this.unreadForDisplay()
+        // },
+        unreadForDisplay() {
+            var res = this.mails.filter(mail => mail.isRead === false)
+            console.log(res.length);
+            unreadMailscount = res
         }
     },
     computed: {
-
+        
     },
 }

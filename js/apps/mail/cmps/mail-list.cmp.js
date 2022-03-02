@@ -20,13 +20,10 @@ export default {
     },
     methods: {
         selectMail(mail) {
-            // this.mail = mail
-            // this.mail.isRead = false
-            // console.log(this.mail);
             this.$emit('mail-selected', mail)
         }
     },
     computed: {
-
+        
     }
 }
