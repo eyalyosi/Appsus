@@ -51,7 +51,8 @@ function getEmptyMail(subject, body) {
         isStarred: false,
         sentAt: new Date(),
         to: '',
-        from: 'user@appsus.com'
+        from: 'user@appsus.com',
+        isSent: true
     };
 }
 
