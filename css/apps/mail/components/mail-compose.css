@@ -1,0 +1,6 @@
+.compose-mail-container {
+  flex-grow: 1;
+}
+.text-area {
+  resize: none;
+}

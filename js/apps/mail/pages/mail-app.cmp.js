@@ -9,12 +9,12 @@ export default {
     template: `
     <h1>mail</h1>
         <section class="mail-app main-layout">
-            <!-- <mail-compose /> -->
             <mail-filter @filtered="setFilter"/>
             <div class="flex space">
                 <mail-folder-list @filter="setFilter" :unreadMailsCount="unreadMailsCount" @show-compose="showComposeMail" @Show-Sent="setFilter"/>
                 <mail-details v-if="selectedMail" :mail="selectedMail" @remove="removeMail"/>
-                <mail-list v-else :mails="mailToDisplay" @mail-selected="setSelectedMail"></mail-list>
+                <mail-list v-if="mails" :mails="mailToDisplay" @mail-selected="setSelectedMail"></mail-list>
+                <mail-compose v-if="isCompuse" @add-new-mail="add"/>
             </div>
         <!-- <button @click="puki">puki</button> -->
         </section>
@@ -31,7 +31,7 @@ export default {
             mails: null,
             selectedMail: null,
             unreadMailsCount: null,
-            // filterBy: null
+            isCompuse: false,
             filterBy: {
                 searchKey: '',
                 label: 'All',
@@ -54,7 +54,9 @@ export default {
                 .then(() => {
                     this.selectedMail = mail
                     mail.isRead = true
+
                     this.mails = [...this.mails]
+                    // this.mails = null
                 })
         },
         showInbox() {
@@ -67,7 +69,6 @@ export default {
                     this.mails.splice(idx, 1)
                     this.mails = [...this.mails]
                     this.selectedMail = null
-
                     // showSuccessMsg('Deleted succesfully');
                 })
         },
@@ -77,12 +78,19 @@ export default {
             this.unreadMailsCount = res.length
         },
         showComposeMail() {
-            console.log('hi')
+            this.selectedMail = null
+            this.mails = null
+            this.isCompuse = true
         },
         setFilter(filterBy) {
+            this.isCompuse = false
             this.selectedMail = null
             this.filterBy = filterBy
-            // console.log(filterBy);
+        },
+        add(newMail) {
+            // console.log(newMail);
+            // mailService.addNewMail(newMail)
+            //     .then(() => this.getMails())
         }
     },
     computed: {
@@ -99,7 +107,6 @@ export default {
                 return this.mails.filter((mail) => (!mail.isRead) && (!mail.isSent))
             }
             if (this.filterBy.isRead) {
-                console.log('hi');
                 return this.mails.filter((mail) => (mail.isSent))
             }
             if (this.filterBy.searchKey) {

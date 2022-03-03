@@ -1,22 +1,21 @@
 /* base */
 
-
-@import 'basic/base.css';
-@import 'basic/helper.css';
-@import 'basic/layout.css';
-@import 'basic/vars.css';
-@import 'basic/header.css';
-
+@import "basic/base.css";
+@import "basic/helper.css";
+@import "basic/layout.css";
+@import "basic/vars.css";
+@import "basic/header.css";
 
 /* apps */
 
-@import 'apps/home-page.css';
+@import "apps/home-page.css";
 
-@import 'apps/note/note.css';
+@import "apps/note/note.css";
 
 /* mail */
-@import 'apps/mail/mail.css';
-@import 'apps/mail/components/folder-list.css';
-@import 'apps/mail/components/mail-details.css';
-@import 'apps/mail/components/mail-list.css';
-@import 'apps/mail/components/mail-preview.css'
+@import "apps/mail/mail.css";
+@import "apps/mail/components/folder-list.css";
+@import "apps/mail/components/mail-details.css";
+@import "apps/mail/components/mail-list.css";
+@import "apps/mail/components/mail-preview.css";
+@import "apps/mail/components/mail-compose.css";

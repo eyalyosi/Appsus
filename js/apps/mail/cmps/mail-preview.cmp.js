@@ -12,7 +12,7 @@ export default {
                        <span :class="isRead">{{mail.subject}} - </span>
                        <span> {{bodyText}}</span>
                 </div>
-                <div>{{mail.sentAt}}</div>
+                <div>{{dateToDisplay}}</div>
                 <!-- <div @click.stop="starMail" title="Star this Mail"><img src="/png/008-star-1.png" alt=""></div>
                 <div @click.stop="readMail" title="Make as Read"><img src="/png/007-read.png" alt=""></div>
                 <div @click.stop="deleteMail" title="delete Mail"><img src="/png/006-delete.png" alt=""></div> -->
@@ -52,12 +52,12 @@ export default {
             var sentAtDate = new Date(this.mail.sentAt)
             var now = new Date()
             var diff = sentAtDate - now
-            diff = diff / 1000
-            // console.log(diff);
-            // if (diff > -1)
-            //     sentAtDate = sentAtDate.toLocaleTimeString()
-            // console.log(sentAtDate);
-            // return date
+            if (diff > -86400000) {
+                return sentAtDate.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit' })
+            }
+            // console.log(typeof sentAtDate.getFullYear());
+            if (sentAtDate.getFullYear() === 2022) return sentAtDate.toLocaleString('en-US', { month: 'short', day: 'numeric' })
+            else return sentAtDate.toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })
         }
     }
 }

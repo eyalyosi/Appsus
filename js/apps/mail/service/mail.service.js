@@ -9,7 +9,8 @@ export const mailService = {
     remove,
     save,
     get,
-    getEmptyMail,
+    addNewMail,
+    // getEmptyMail,
 };
 
 function query() {
@@ -41,19 +42,19 @@ function _setNextPrevmailId(mail) {
     })
 }
 
-// Factory Method:
-function getEmptyMail(subject, body) {
-    return {
+function addNewMail(mail) {
+    const newMail = {
+        subject: mail.subject,
+        body: mail.body,
+        to: mail.to,
         id: utilService.makeId(),
-        subject,
-        body,
-        isRead: false,
+        isRead: true,
         isStarred: false,
         sentAt: new Date(),
-        to: '',
-        from: 'user@appsus.com',
+        from: 'Mahatma@appsus.com',
         isSent: true
-    };
+    }
+    return save(newMail)
 }
 
 function _createMails() {
@@ -67,7 +68,7 @@ function _createMails() {
                 isRead: false,
                 isStarred: true,
                 sentAt: new Date(2022, 2, 3, 10, 30),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'eyal@gmail.com',
                 isSent: false,
             },
@@ -78,7 +79,7 @@ function _createMails() {
                 isRead: false,
                 isStarred: false,
                 sentAt: new Date(2022, 2, 3, 9, 4),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'yosef@gmail.com',
                 isSent: false,
             },
@@ -89,7 +90,7 @@ function _createMails() {
                 isRead: true,
                 isStarred: false,
                 sentAt: new Date(2022, 0, 4, 7, 44),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'lihi@gmail.com',
                 isSent: false
             },
@@ -100,7 +101,7 @@ function _createMails() {
                 isRead: false,
                 isStarred: true,
                 sentAt: new Date(2022, 2, 1, 8, 10),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'dvir@gmail.com',
                 isSent: false
             },
@@ -110,8 +111,8 @@ function _createMails() {
                 body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam doloribus cum incidunt? Tempora dolor incidunt assumenda ea ipsam vitae eveniet iure vel. Dolores magnam voluptatum id perferendis maxime, expedita earum.',
                 isRead: false,
                 isStarred: false,
-                sentAt: new Date(2022, 2, 25, 5, 55),
-                to: 'user@appsus.com',
+                sentAt: new Date(2022, 1, 25, 5, 55),
+                to: 'Mahatma@appsus.com',
                 from: 'yosef@gmail.com',
                 isSent: false
             },
@@ -122,7 +123,7 @@ function _createMails() {
                 isRead: true,
                 isStarred: false,
                 sentAt: new Date(2022, 2, 3, 8, 50),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'lihi@gmail.com',
                 isSent: false
             },
@@ -133,7 +134,7 @@ function _createMails() {
                 isRead: false,
                 isStarred: false,
                 sentAt: new Date(2021, 7, 22, 1, 32),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'eyal@gmail.com',
                 isSent: false
             },
@@ -144,7 +145,7 @@ function _createMails() {
                 isRead: false,
                 isStarred: false,
                 sentAt: new Date(1980, 9, 1, 7, 30),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'barak@gmail.com',
                 isSent: false
             },
@@ -155,7 +156,7 @@ function _createMails() {
                 isRead: true,
                 isStarred: true,
                 sentAt: new Date(2021, 11, 11, 11, 11),
-                to: 'user@appsus.com',
+                to: 'Mahatma@appsus.com',
                 from: 'dafi@gmail.com',
                 isSent: false
             },
@@ -167,7 +168,7 @@ function _createMails() {
                 isStarred: false,
                 sentAt: new Date(2021, 11, 11, 11, 11),
                 to: 'dafi@gmail.com',
-                from: 'user@appsus.com',
+                from: 'Mahatma@appsus.com',
                 isSent: true
             },
             {
@@ -178,7 +179,7 @@ function _createMails() {
                 isStarred: false,
                 sentAt: new Date(2021, 11, 11, 11, 11),
                 to: 'barak@gmail.com',
-                from: 'user@appsus.com',
+                from: 'Mahatma@appsus.com',
                 isSent: true
             }, {
                 id: utilService.makeId(),
@@ -188,7 +189,7 @@ function _createMails() {
                 isStarred: false,
                 sentAt: new Date(2021, 11, 11, 11, 11),
                 to: 'yosef@gmail.com',
-                from: 'user@appsus.com',
+                from: 'Mahatma@appsus.com',
                 isSent: true
             }, {
                 id: utilService.makeId(),
@@ -198,7 +199,7 @@ function _createMails() {
                 isStarred: false,
                 sentAt: new Date(2021, 11, 11, 11, 11),
                 to: 'eyal@gmail.com',
-                from: 'user@appsus.com',
+                from: 'Mahatma@appsus.com',
                 isSent: true
             },
         ];
@@ -212,9 +213,17 @@ function _createMail(subject, body) {
     return mail;
 }
 
-function _getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
+// Factory Method:
+// function getEmptyMail(subject, body,) {
+//     return {
+//         subject,
+//         body,
+//         to: '',
+//         id: utilService.makeId(),
+//         isRead: true,
+//         isStarred: false,
+//         sentAt: new Date(),
+//         from: 'user@appsus.com',
+//         isSent: true
+//     };
+// }
