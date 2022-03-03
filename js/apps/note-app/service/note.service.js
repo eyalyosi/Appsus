@@ -113,8 +113,18 @@ function getNotes(){
       }
     },
     {
-      type : 'noteImg',
+      type : 'noteVideo',
       id:"n106",
+      info: {
+        label: 'Video',
+        txt: 'watch?v=Su4Gv-cwpWI&list=RDSu4Gv-cwpWI&index=1',
+        color: 'rgb(246, 239, 239)',
+        isPinned: false,
+      }
+    },
+    {
+      type : 'noteImg',
+      id:"n107",
       info: {
         label: 'Image',
         txt: 'https://i.picsum.photos/id/234/200/300.jpg?hmac=KD9xFDCez7-lqgcMm-EEi7BtpClIdCzJS6YvFVyLiDs',

@@ -1,12 +1,10 @@
 export default {
     props: ["cmp"],
 template:`
-<section class="flex evenly wrap">
-    <div :style="{backgroundColor:cmp.info.color}">
-    <!-- <button @click="remove(cmp.id)">X</button> -->
-    <h4>{{cmp.info.label}}</h4>
+<section >
+    <div>
+    <h4>{{cmp.info.label}}</h4><hr>
     <p>{{cmp.info.txt}}</p>
-    <input v-model="color" type="color" @input="noteColor(cmp.id)">
     </div>
 </section>
 `,

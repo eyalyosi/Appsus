@@ -5,9 +5,11 @@ import noteList from '../cmps/note-list.cmp.js'
 export default {
   template: `
   <note-app>
-<h1>note</h1>
-<note-list :notes="notes" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
-</note-app>
+    <div class="main-note">
+      <h1>note</h1>
+      <note-list :notes="notes" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
+    </div>
+  </note-app>
 `,
 components: {
   noteList,

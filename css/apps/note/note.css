@@ -5,7 +5,33 @@
     padding: 10px;
 }
 
-.blue {
-    background-color: steelblue;
-    
+.note-preview {
+    gap: 30px;
 }
+
+.main-note {
+    width: 85vw;
+    margin: 0 auto;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+.note-preview h4 {
+    padding: 0;
+    margin: 0;
+}
+
+.note-preview p {
+    padding: 5px;
+} 
+
+.todo {
+    
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+.dane{
+    text-decoration: line-through;
+} 

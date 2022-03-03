@@ -5,7 +5,7 @@ export default {
   template: `
 <section class="note-list">
   <input v-model="note"   type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
-  <pre>x{{note}}x</pre>
+ 
     <!-- <ul class="flex evenly wrap"> -->
         <!-- <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}"> -->
             <note-preview @color="noteColor" @remove="remove" :notes="notes" />

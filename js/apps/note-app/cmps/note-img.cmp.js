@@ -2,7 +2,7 @@ export default {
     props: ['cmp'],
 template:`
     <section>
-        <div :style="{backgroundColor:cmp.info.color}">
+        <div >
             <h4>{{cmp.info.label}}</h4><hr>
             <img :src="setImg">
         </div>

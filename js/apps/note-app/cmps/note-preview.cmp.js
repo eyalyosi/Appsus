@@ -1,28 +1,31 @@
 import textNote from './text-note.cmp.js' 
 import noteTodo from './note-todo.cmp.js' 
 import noteImg from './note-img.cmp.js' 
+import noteVideo from './note-video.cmp.js' 
 // import { noteService } from '../service/note.service.js'
 
 export default {
     props: ['notes'],
 template:`
-<section v-if="notes" class="note-preview">
-    <!-- <div class="txt-note"> {{note.info.txt}} </div> -->
-  <div v-for="cmp in notes">
+<section v-if="notes" class="note-preview flex wrap evenly" >
+   
+  <div v-for="cmp in notes"  :style="{backgroundColor:cmp.info.color}">
+      <component :is="cmp.type" :cmp="cmp"  ></component>        
         <button @click="remove(cmp.id)">X</button>
-    <component :is="cmp.type" :cmp="cmp" @color="color" ></component>        
-      
+        <input v-model="color" type="color" @input="noteColor(cmp.id)">
   </div>
 </section>
 `,
 components: {
     textNote,
     noteTodo,
-    noteImg
+    noteImg,
+    noteVideo
 },
 data() {
     return {
-        notes: this.notes
+        notes: this.notes,
+        color: null
     };
 },
 created(){
@@ -33,8 +36,8 @@ created(){
     // })
 },
 methods:{
-    color(id,color) {
-        this.$emit('color',id,color)
+    noteColor(id) {
+        this.$emit('color',id,this.color)
     },
     remove(id) {
         this.$emit('remove',id)
