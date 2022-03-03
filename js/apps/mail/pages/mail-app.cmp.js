@@ -11,8 +11,8 @@ export default {
             <!-- <mail-add /> -->
             <!-- <mail-nav /> -->
             <!-- <mail-filter /> -->
-            <mail-folder-list @show-inbox="showInbox" />
-            <mail-details v-if="selectedMail" :mail="selectedMail"/>
+            <mail-folder-list @show-inbox="showInbox" :unreadMailscount="unreadMailscount"/>
+            <mail-details v-if="selectedMail" :mail="selectedMail" @remove="removeMail"/>
             <mail-list v-else :mails="mails" @mail-selected="setSelectedMail"></mail-list>
         <!-- <button @click="puki">puki</button> -->
         </section>
@@ -31,27 +31,52 @@ export default {
         }
     },
     created() {
-        mailService.query()
-            .then(mails => this.mails = mails)
+        this.getMails()
     },
     methods: {
+        getMails() {
+            mailService.query()
+                .then(mails => {
+                    this.mails = mails
+                    this.unreadForDisplay()
+                })
+        },
         setSelectedMail(mail) {
             this.selectedMail = mail
+            mailService.save(mail)
+
         },
         showInbox() {
             this.selectedMail = null
         },
-        // puki() {
-        //     console.log(this.mails);
-        //     this.unreadForDisplay()
-        // },
+        removeMail(id) {
+            mailService.remove(id)
+                .then(() => {
+                    const idx = this.mails.findIndex((mail) => mail.id === id);
+                    this.mails.splice(idx, 1);
+                    this.selectedMail = null
+
+                    // showSuccessMsg('Deleted succesfully');
+                })
+        },
         unreadForDisplay() {
             var res = this.mails.filter(mail => mail.isRead === false)
-            console.log(res.length);
-            unreadMailscount = res
+            this.unreadMailscount = res.length
         }
+        // puki() {
+        //     console.log(this.unreadMailscount);
+        // },
+
     },
     computed: {
-        
     },
+    watch: {
+        unreadMailscount: {
+            handler() {
+                this.getMails()
+                // console.log('hi');
+            },
+            immediate: true,
+        }
+    }
 }

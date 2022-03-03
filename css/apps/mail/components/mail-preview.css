@@ -1,3 +1,7 @@
-.isRead {
+.unread {
     font-weight: bold;
+}
+
+.isRead {
+    background-color: lightgrey;
 }

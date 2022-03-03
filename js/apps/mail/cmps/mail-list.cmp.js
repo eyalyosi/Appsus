@@ -20,10 +20,10 @@ export default {
     },
     methods: {
         selectMail(mail) {
+            mail.isRead = true
             this.$emit('mail-selected', mail)
         }
     },
     computed: {
-        
     }
 }
