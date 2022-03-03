@@ -19,6 +19,7 @@ data() {
 created(){},
 methods:{
     checkList(id,idx){
+        
        console.log(id);
        console.log(idx);
     }

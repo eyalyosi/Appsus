@@ -34,7 +34,7 @@ components: {
         this.notes.splice(idx, 1);
       })
     },
-    addNote(txt) {
+    addNote(txt,selector) {
       console.log(txt);
       noteService.createNote(txt)
       .then(note => {
