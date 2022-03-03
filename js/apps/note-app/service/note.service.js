@@ -92,6 +92,36 @@ function getNotes(){
         isPinned: false,
       }
     },
+    {
+      type : 'noteTodo',
+      id:"n104",
+      info: {
+        label: 'Todo',
+        txt: ['eat','take a shawer'],
+        color: 'rgb(246, 239, 239)',
+        isPinned: false,
+      }
+    },
+    {
+      type : 'noteTodo',
+      id:"n105",
+      info: {
+        label: 'Todo',
+        txt: ['finish the sprint','love','do something'],
+        color: 'rgb(246, 239, 239)',
+        isPinned: false,
+      }
+    },
+    {
+      type : 'noteImg',
+      id:"n106",
+      info: {
+        label: 'Image',
+        txt: 'https://i.picsum.photos/id/234/200/300.jpg?hmac=KD9xFDCez7-lqgcMm-EEi7BtpClIdCzJS6YvFVyLiDs',
+        color: 'rgb(246, 239, 239)',
+        isPinned: false,
+      }
+    },
 
   ]
 }

@@ -1,4 +1,6 @@
 import textNote from './text-note.cmp.js' 
+import noteTodo from './note-todo.cmp.js' 
+import noteImg from './note-img.cmp.js' 
 // import { noteService } from '../service/note.service.js'
 
 export default {
@@ -15,6 +17,8 @@ template:`
 `,
 components: {
     textNote,
+    noteTodo,
+    noteImg
 },
 data() {
     return {
