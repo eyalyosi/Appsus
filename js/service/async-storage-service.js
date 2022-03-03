@@ -5,8 +5,8 @@ export const storageService = {
     put,
     remove,
     postMany,
-    removeNote,
-    postNote
+    // removeNote,
+    // postNote
 }
 
 function query(entityType) {
@@ -76,20 +76,20 @@ function _makeId(length = 8) {
 // my function
 
 
-function removeNote(entityType, entityId) {
-    return query(entityType)
-        .then(entities => {
-            const idx = entities.findIndex(entity => entity.info.id === entityId);
-            entities.splice(idx, 1)
-            _save(entityType, entities)
-        })
-}
+// function removeNote(entityType, entityId) {
+//     return query(entityType)
+//         .then(entities => {
+//             const idx = entities.findIndex(entity => entity.info.id === entityId);
+//             entities.splice(idx, 1)
+//             _save(entityType, entities)
+//         })
+// }
 
-function postNote(entityType, newEntity) {
-    return query(entityType)
-        .then(entities => {
-            entities.push(newEntity);
-            _save(entityType, entities)
-            return newEntity;
-        })
-}
+// function postNote(entityType, newEntity) {
+//     return query(entityType)
+//         .then(entities => {
+//             entities.push(newEntity);
+//             _save(entityType, entities)
+//             return newEntity;
+//         })
+// }

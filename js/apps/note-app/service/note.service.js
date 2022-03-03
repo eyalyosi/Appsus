@@ -64,30 +64,30 @@ function getNotes(){
      gNotes =  [
     {
       type : 'textNote',
+      id:"n101",
       info: {
         label: 'Note',
         txt: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, molestiae.',
-        id:"n101",
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
     },
     {
       type : 'textNote',
+      id:"n102",
       info: {
         label: 'Note',
         txt: 't consectetur adipisicing elit. Sequi, molestiae.',
-        id:"n102",
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
     },
     {
       type : 'textNote',
+      id:"n103",
       info: {
         label: 'Note',
         txt: ' adipisicing elit. Sequi, molestiae.',
-        id:"n103",
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -106,7 +106,7 @@ function query() {
 }
 
 function remove(noteId) {
-   storageService.removeNote(KEY_NOTE, noteId)
+   storageService.remove(KEY_NOTE, noteId)
    return query()
    .then(notes => notes)
 }
@@ -115,15 +115,15 @@ function createNote(txt ,type='textNote') {
   console.log(txt);
 const note = {
   type,
+  id: '',
   info: {
     label:'Note',
-    id: utilService.makeId(),
     txt,
     color:'rgb(246, 239, 239)',
     isPinned:false
   }
 }
-return storageService.postNote(KEY_NOTE,note)
+return storageService.post(KEY_NOTE,note)
 }
 
 function get(noteId) {
