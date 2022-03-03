@@ -4,7 +4,7 @@ export default {
               <form action="" type="submit" class="mail-filter">
                     <label>
                         Sarch mail:
-                        <input type="text" v-model="filterBy.mailFrom" placeholder="search by from">
+                        <input type="text" v-model="filterBy.searchKey" placeholder="search by from">
                     </label>
                     <button @click.prevent="setFilter">Search</button>
                     <label for="mail-choice">
@@ -22,8 +22,9 @@ export default {
     data() {
         return {
             filterBy: {
-                mailfrom: '',
-                label: null
+                searchKey: '',
+                label: '',
+                isRead: ''
             }
         }
     },

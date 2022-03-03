@@ -3,7 +3,7 @@ export default {
     template: `
         <section class="mail-show-container">
             <div class="mail-show">
-                <p>{{mail.subject}}<button @click="remove(mail.id)"><img src="/png/006-delete.png" alt=""></button></p>
+                <p>{{mail.subject}}<button @click="remove(mail.id)"><img src="./png/006-delete.png" alt=""></button></p>
                 <h4><span>{{mail.from}}</span><span>{{mail.to}}</span></h4>
                 <div class="mail-body">
                     {{mail.body}}

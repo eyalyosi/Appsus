@@ -12,7 +12,7 @@ export default {
             <!-- <mail-nav /> -->
             <mail-filter @filtered="setFilter"/>
             <div class="flex space">
-                <mail-folder-list @show-inbox="showInbox" :unreadMailsCount="unreadMailsCount" @show-compose="showComposeMail"/>
+                <mail-folder-list @filter="setFilter" :unreadMailsCount="unreadMailsCount" @show-compose="showComposeMail" @Show-Sent="setFilter"/>
                 <mail-details v-if="selectedMail" :mail="selectedMail" @remove="removeMail"/>
                 <mail-list v-else :mails="mailToDisplay" @mail-selected="setSelectedMail"></mail-list>
             </div>
@@ -30,7 +30,12 @@ export default {
             mails: null,
             selectedMail: null,
             unreadMailsCount: null,
-            filterBy: null,
+            // filterBy: null
+            filterBy: {
+                searchKey: '',
+                label: 'All',
+                isRead: null
+            }
         }
     },
     created() {
@@ -67,27 +72,41 @@ export default {
         },
         unreadForDisplay() {
             if (!this.mails) return
-            var res = this.mails.filter(mail => mail.isRead === false)
+            var res = this.mails.filter(mail => (mail.isRead === false) && (mail.isSent === false))
             this.unreadMailsCount = res.length
         },
         showComposeMail() {
             console.log('hi')
         },
         setFilter(filterBy) {
+            this.selectedMail = null
             this.filterBy = filterBy
-            // console.log(this.filterBy);
+            // console.log(filterBy);
         }
     },
     computed: {
         mailToDisplay() {
-            // console.log(this.mails);
-            if (!this.filterBy) {
-                    // console.log('hi');
-                return this.mails}
+            if (!this.filterBy) return this.mails
+            if (!this.mails) return
             if (this.filterBy.label === 'All') {
-                // console.log(this.mails);
-                return this.mails.filter((mail) => (mail.isRead === true) && (mail.isRead === false))}
-
+                return this.mails.filter((mail) => (!mail.isSent))
+            }
+            if (this.filterBy.label === 'Read') {
+                return this.mails.filter((mail) => (mail.isRead) && (!mail.isSent))
+            }
+            if (this.filterBy.label === 'Unread') {
+                return this.mails.filter((mail) => (!mail.isRead) && (!mail.isSent))
+            }
+            if (this.filterBy.isRead) {
+                console.log('hi');
+                return this.mails.filter((mail) => (mail.isSent))
+            }
+            if (this.filterBy.searchKey) {
+                console.log('hi');
+                const regex = new RegExp(this.filterBy.searchKey, 'i')
+                return this.mails.filter((mail) => (regex.test(mail.subject) || regex.test(mail.body) ||
+                    regex.test(mail.body) || regex.test(mail.to) || regex.test(mail.from)) && (!mail.isSent))
+            }
         }
     },
     watch: {

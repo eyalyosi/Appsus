@@ -6,8 +6,8 @@ export default {
            <div @click="onCompuse"><img src="/png/005-plus.png">Compose</div>
            <div @click="showInbox"><img src="/png/002-download.png"> Inbox <span class="unread">({{unreadMailsCount}})</span></div>
            <div><img src="/png/003-star.png"> Starred</div>
-           <div><img src="/png/004-mail.png"> Sent Mail</div>
-           <div><img src="/png/001-drafts.png"> Drafts</div>
+           <div @Click="sentMails"><img src="/png/004-mail.png"> Sent Mail</div>
+           <!-- <div><img src="/png/001-drafts.png"> Drafts</div> -->
        </section>
     `,
     components: {
@@ -20,10 +20,13 @@ export default {
     },
     methods: {
         showInbox() {
-            this.$emit('show-inbox')
+            this.$emit('filter', { mailfrom: '', label: 'All', isRead: '' })
         },
         onCompuse() {
             this.$emit('show-compose')
+        },
+        sentMails() {
+            this.$emit('Show-Sent', { mailfrom: '', label: '', isRead: true })
         }
     },
     computed: {
