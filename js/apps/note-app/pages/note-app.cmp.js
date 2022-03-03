@@ -4,9 +4,10 @@ import noteList from '../cmps/note-list.cmp.js'
 
 export default {
   template: `
+  <note-app>
 <h1>note</h1>
-<note-list :notes="notes" @color="noteColor" @add="addNote" @remove="removeNote"></note-list>
-
+<note-list :notes="notes" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
+</note-app>
 `,
 components: {
   noteList,
@@ -27,23 +28,23 @@ components: {
     removeNote(id) {
       noteService.remove(id)
       .then(notes => {
-        const idx = this.notes.findIndex((note) => note.id === id);
+        const idx = this.notes.findIndex((note) => note.info.id === id);
         this.notes.splice(idx, 1);
       })
     },
     addNote(txt) {
+      console.log(txt);
       noteService.createNote(txt)
       .then(note => {
         this.notes.push(note)
-        console.log(note);
+        
       })
     },
-    noteColor(note){
-      noteService.changeNoteColor(note)
-      .then(res => {
-        const idx = this.notes.findIndex(note => note.id === res.id)
-        this.notes.splice(idx,1,res)
-      })
+    noteColor(id,color){
+      const currNote = this.notes.find((note) => note.info.id === id);
+      currNote.info.color = color
+      console.log(currNote);
+      noteService.changeNoteColor(currNote)
     }
         
            

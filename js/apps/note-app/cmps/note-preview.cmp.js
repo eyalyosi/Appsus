@@ -1,18 +1,40 @@
-
+import textNote from './text-note.cmp.js' 
+// import { noteService } from '../service/note.service.js'
 
 export default {
-    props: ['note'],
+    props: ['notes'],
 template:`
-<section class="note-preview">
-  
-    <div class="txt-note"> {{note.info.txt}} </div>
-    
+<section v-if="notes" class="note-preview">
+    <!-- <div class="txt-note"> {{note.info.txt}} </div> -->
+  <div v-for="cmp in notes">
+    <component :is="cmp.type" :info="cmp.info" @color="color" @remove="remove"></component>        
+      
+  </div>
 </section>
 `,
-data() {
-    return {};
+components: {
+    textNote,
 },
-created(){},
-methods:{},
+data() {
+    return {
+        notes: this.notes
+    };
+},
+created(){
+    // this.notes=this.notes
+    // noteService.getNotes()
+    // .then(notes => {
+    //     this.notes = notes
+    // })
+},
+methods:{
+    color(id,color) {
+        this.$emit('color',id,color)
+    },
+    remove(id) {
+        this.$emit('remove',id)
+    }
+
+},
 computed:{},
 }
