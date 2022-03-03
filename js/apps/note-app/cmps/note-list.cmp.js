@@ -3,13 +3,13 @@ import notePreview from "./note-preview.cmp.js";
 export default {
   props: ["notes"],
   template: `
-<section class="note-list">
+<section >
   <input v-model="note"   type="text" placeholder="What\`s on your mind..."><button @click="addNote">note that</button>
- 
+ <div class="note-list">
     <!-- <ul class="flex evenly wrap"> -->
         <!-- <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}"> -->
             <note-preview @color="noteColor" @remove="remove" :notes="notes" />
-            
+            </div>
             <!-- <input v-model="color" type="color" @input="noteColor(note)"> -->
           <!-- </li> -->
         <!-- </ul> -->

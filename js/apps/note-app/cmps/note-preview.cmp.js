@@ -7,7 +7,7 @@ import noteVideo from './note-video.cmp.js'
 export default {
     props: ['notes'],
 template:`
-<section v-if="notes" class="note-preview flex wrap evenly" >
+<section v-if="notes" class="note-preview flex wrap " >
    
   <div v-for="cmp in notes"  :style="{backgroundColor:cmp.info.color}">
       <component :is="cmp.type" :cmp="cmp"  ></component>        
