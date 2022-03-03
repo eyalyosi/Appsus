@@ -3,13 +3,13 @@ import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailFolderList from '../cmps/mail-folder-list.cmp.js'
 import mailDetails from './mail-details.cmp.js'
+import mailCompose from '../cmps/mail-compose.cmp.js'
 
 export default {
     template: `
     <h1>mail</h1>
         <section class="mail-app main-layout">
-            <!-- <mail-add /> -->
-            <!-- <mail-nav /> -->
+            <!-- <mail-compose /> -->
             <mail-filter @filtered="setFilter"/>
             <div class="flex space">
                 <mail-folder-list @filter="setFilter" :unreadMailsCount="unreadMailsCount" @show-compose="showComposeMail" @Show-Sent="setFilter"/>
@@ -23,7 +23,8 @@ export default {
         mailList,
         mailFilter,
         mailFolderList,
-        mailDetails
+        mailDetails,
+        mailCompose
     },
     data() {
         return {
