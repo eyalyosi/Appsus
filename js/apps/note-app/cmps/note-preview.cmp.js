@@ -7,7 +7,8 @@ template:`
 <section v-if="notes" class="note-preview">
     <!-- <div class="txt-note"> {{note.info.txt}} </div> -->
   <div v-for="cmp in notes">
-    <component :is="cmp.type" :info="cmp.info" @color="color" @remove="remove"></component>        
+        <button @click="remove(cmp.id)">X</button>
+    <component :is="cmp.type" :cmp="cmp" @color="color" ></component>        
       
   </div>
 </section>

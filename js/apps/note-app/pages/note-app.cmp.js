@@ -28,7 +28,7 @@ components: {
     removeNote(id) {
       noteService.remove(id)
       .then(notes => {
-        const idx = this.notes.findIndex((note) => note.info.id === id);
+        const idx = this.notes.findIndex((note) => note.id === id);
         this.notes.splice(idx, 1);
       })
     },
@@ -41,7 +41,7 @@ components: {
       })
     },
     noteColor(id,color){
-      const currNote = this.notes.find((note) => note.info.id === id);
+      const currNote = this.notes.find((note) => note.id === id);
       currNote.info.color = color
       console.log(currNote);
       noteService.changeNoteColor(currNote)
