@@ -4,37 +4,34 @@ export default {
               <form action="" type="submit" class="mail-filter">
                     <label>
                         Sarch mail:
-                        <input type="text" v-model="filterBy" placeholder="search by title / subject/ from / date">
+                        <input type="text" v-model="filterBy.mailFrom" placeholder="search by from">
                     </label>
+                    <button @click.prevent="setFilter">Search</button>
                     <label for="mail-choice">
-                        <input list="mail-choice-list" id="mail-choice" name="mail-choice" />
- 
+                        <input list="mail-choice-list" id="mail-choice" name="mail-choice" v-model="filterBy.label" @change="setFilter"/>
                             <datalist id="mail-choice-list">
-                                <option value="All">
-                                <option value="Read">
-                                <option value="Unread">
-                                <option value="Starred">
+                                <option value="All"></option>
+                                <option value="Read"></option>
+                                <option value="Unread"></option>
+                                <option value="Starred"></option>
                             </datalist>
                     </label>
-                    <!-- <button @click.prevent="setFilter">Search</button> -->
               </form>
           </section>
     `,
     data() {
         return {
             filterBy: {
-                mailTo: '',
-                title: '',
-                subject: '',
-                data: ''
+                mailfrom: '',
+                label: null
             }
         }
     },
     created() { },
     methods: {
-        // setFilter() {
-        //     this.$emit('filtered', {...this.filterBy});
-        // }
+        setFilter() {
+            this.$emit('filtered', { ...this.filterBy });
+        }
     },
     computed: {}
 }

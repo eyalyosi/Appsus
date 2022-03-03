@@ -42,7 +42,7 @@ function _setNextPrevmailId(mail) {
 }
 
 // Factory Method:
-function getEmptyMail(subject, body ) {
+function getEmptyMail(subject, body) {
     return {
         id: utilService.makeId(),
         subject,
@@ -50,8 +50,8 @@ function getEmptyMail(subject, body ) {
         isRead: false,
         isStarred: false,
         sentAt: new Date(),
-        to: 'momo@momo.com',
-        from: ''
+        to: '',
+        from: 'user@appsus.com'
     };
 }
 
@@ -62,92 +62,92 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 subject: 'First mail!',
-                body: 'Good luck!',
+                body: 'Good luck with the sprint',
                 isRead: false,
                 isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
+                sentAt: new Date(2022, 2, 3, 10, 30),
+                to: 'user@appsus.com',
                 from: 'eyal@gmail.com'
             },
             {
                 id: utilService.makeId(),
-                subject: 'Second mail!',
-                body: 'Have fun!',
+                subject: 'Second mail',
+                body: 'Have fun in the sun!',
                 isRead: false,
                 isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
+                sentAt: new Date(2022, 2, 3, 9, 4),
+                to: 'user@appsus.com',
                 from: 'yosef@gmail.com'
             },
             {
                 id: utilService.makeId(),
-                subject: 'Third mail!',
+                subject: 'Third mail',
                 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 isRead: true,
                 isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
+                sentAt: new Date(2022, 0, 4, 7, 44),
+                to: 'user@appsus.com',
                 from: 'lihi@gmail.com'
             },
             {
                 id: utilService.makeId(),
-                subject: 'First mail!',
-                body: 'Good luck!',
+                subject: 'Very important!',
+                body: 'Please dont forget to...',
                 isRead: false,
                 isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
+                sentAt: new Date(2022, 2, 1, 8, 10),
+                to: 'user@appsus.com',
+                from: 'dvir@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Shalom Shalom',
+                body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam doloribus cum incidunt? Tempora dolor incidunt assumenda ea ipsam vitae eveniet iure vel. Dolores magnam voluptatum id perferendis maxime, expedita earum.',
+                isRead: false,
+                isStarred: false,
+                sentAt: new Date(2022, 2, 25, 5, 55),
+                to: 'user@appsus.com',
+                from: 'yosef@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'How are you?',
+                body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                isRead: true,
+                isStarred: false,
+                sentAt: new Date(2022, 2, 3, 8, 50),
+                to: 'user@appsus.com',
+                from: 'lihi@gmail.com'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Code review',
+                body: 'Dont forget to ask CR when you finish.',
+                isRead: false,
+                isStarred: false,
+                sentAt: new Date(2021, 7, 22, 1, 32),
+                to: 'user@appsus.com',
                 from: 'eyal@gmail.com'
             },
             {
                 id: utilService.makeId(),
-                subject: 'Second mail!',
-                body: 'Have fun!',
+                subject: 'Thank you very much',
+                body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam doloribus cum incidunt?',
                 isRead: false,
                 isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
-                from: 'yosef@gmail.com'
+                sentAt: new Date(1980, 9, 1, 7, 30),
+                to: 'user@appsus.com',
+                from: 'barak@gmail.com'
             },
             {
                 id: utilService.makeId(),
-                subject: 'Third mail!',
-                body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                subject: 'I LOVE YOU!',
+                body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam doloribus cum incidunt? Tempora dolor incidunt assumenda ea ipsam vitae eveniet iure vel. Dolores magnam voluptatum id perferendis maxime, expedita earum.',
                 isRead: true,
                 isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
-                from: 'lihi@gmail.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'First mail!',
-                body: 'Good luck!',
-                isRead: false,
-                isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
-                from: 'eyal@gmail.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Second mail!',
-                body: 'Have fun!',
-                isRead: false,
-                isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
-                from: 'yosef@gmail.com'
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Third mail!',
-                body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                isRead: true,
-                isStarred: false,
-                sentAt: new Date(),
-                to: 'momo@momo.com',
-                from: 'lihi@gmail.com'
+                sentAt: new Date(2021, 11, 11, 11, 11),
+                to: 'user@appsus.com',
+                from: 'dafi@gmail.com'
             },
         ];
         utilService.saveToStorage(STORAGE_KEY, mails);
@@ -155,11 +155,15 @@ function _createMails() {
     return mails;
 }
 
-function _createMail(subject, body ) {
-    const mail = getEmptymail(subject, body )
+function _createMail(subject, body) {
+    const mail = getEmptymail(subject, body)
     // mail.id = utilService.makeId()
     return mail;
 }
 
-
+function _getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 

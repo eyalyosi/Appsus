@@ -19,10 +19,9 @@ export default {
         }
     },
     methods: {
-        selectMail(mail) {
-            mail.isRead = true
+        selectMail(mail) {           
             this.$emit('mail-selected', mail)
-        }
+        },
     },
     computed: {
     }
