@@ -3,13 +3,13 @@
 export default {
     template: `
        <section class="compose-mail-container">
-            <div class="mail-container">
-                <form >
+            <div>
+                <form class="mail-container">
                     <div><h3>New Message</h3></div>
-                    <div>To:<input type="email" v-model="newMail.mailTo"></div>
-                    <div>Subject:<input type="text" placeholder="Subject" v-model="newMail.subject"></div>
-                    <div><textarea rows="10" cols="50" class="text-area" v-model="newMail.body"></textarea></div>
-                    <div><button @click.prevent="saveMail">Send</button><button @click.prevent="deleteMail"><img src="./png/006-delete.png" alt=""></button></div>
+                    <div><input type="email" v-model="newMail.mailTo" class="input" placeholder="To"></div>
+                    <div><input type="text" placeholder="Subject" v-model="newMail.subject" class="input"  placeholder="Subject"></div>
+                    <div class="text-area-container"><textarea rows="10" cols="50" class="text-area" v-model="newMail.body" class="input"></textarea></div>
+                    <div class="compose-buttons flex space align"><button @click.prevent="saveMail" class="compose-btn">Send</button><button @click.prevent="deleteMail" class="compose-btn"><img src="./png/006-delete.png" alt=""></button></div>
                 </form>
             </div>
        </section>

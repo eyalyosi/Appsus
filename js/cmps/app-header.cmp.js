@@ -3,7 +3,7 @@ export default {
         <header class="app-header">
             <div class="main-header flex space align">
             <div class="logo">
-                <h3>Appsus</h3>
+                <h2>Appsus</h2>
             </div>
 
             <div class="filter-container">

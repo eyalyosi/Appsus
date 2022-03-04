@@ -1,7 +1,35 @@
 .unread {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .isRead {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
+
+.single-mail-container > * {
+  padding: 3px;
+}
+
+.mail-from {
+  min-width: 100px;
+}
+
+.read-and-delet {
+  gap: 10px;
+}
+/* .single-mail-container {
+  position: relative;
+} */
+/* .single-mail-container .mail-title-subject-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} */
+/* .mail-title-subject-container {
+  overflow: hidden;
+} */
+/* .body-span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} */

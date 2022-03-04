@@ -4,3 +4,25 @@
 .text-area {
   resize: none;
 }
+h3 {
+  padding: 10px;
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+.input {
+  width: 100%;
+}
+
+.compose-btn {
+  height: 33px;
+  cursor: pointer;
+}
+
+.text-area {
+  border: none;
+}
+
+.text-area-container {
+  border: 1px solid;
+}

@@ -20,7 +20,7 @@
 }
 
 .compose-mail {
-  font-size: 30px;
+  font-size: 25px;
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
@@ -36,4 +36,6 @@
   transition: 0.3s;
 }
 
-
+.compose-mail img {
+  color: red;
+}

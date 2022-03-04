@@ -4,18 +4,22 @@
 export default {
     props: ['mail'],
     template: `
-            <div class="single-mail flex space" :class="unRead">
-                <div class="mail-to" :class="isRead">
+            <div class="single-mail-container flex space align" :class="unRead">
+                <div @click.stop="starMail" :title="titleStarred"><img :src="starForDisplay"></div>
+                <div class="mail-from" :class="isRead">
                          {{fromToDisplay}}
                 </div >
-                <div class="mail-title-subject-container">
-                       <span :class="isRead">{{mail.subject}} - </span>
-                       <span> {{bodyText}}</span>
-                </div>
+                <!-- <div class="mail-title-subject-container"> -->
+                <span class="mail-title-subject-container">
+                    <span :class="isRead">{{mail.subject}} - </span>
+                    <span class="body-span"> {{bodyText}}</span>
+                </span>
+                <!-- </div> -->
                 <div>{{dateToDisplay}}</div>
-                <!-- <div @click.stop="starMail" title="Star this Mail"><img src="/png/008-star-1.png" alt=""></div>
-                <div @click.stop="readMail" title="Make as Read"><img src="/png/007-read.png" alt=""></div>
-                <div @click.stop="deleteMail" title="delete Mail"><img src="/png/006-delete.png" alt=""></div> -->
+                <div class="read-and-delet flex">
+                    <div @click.stop="readMail" :title="titleRead"><img :src="readForDiaplay"></div>
+                    <div @click.stop="deleteMail" title="Delete Mail"><img src="/png/006-delete.png" alt=""></div>
+                </div>
             </div>      
     `,
     data() {
@@ -25,12 +29,15 @@ export default {
     created() {
     },
     methods: {
-        // readMail() {
-        //     this.$emit('read-mail', this.mail.id)
-        // },
-        // starMail() {
-        //     this.$emit('star-mail', this.mail.id)
-        // }
+        readMail() {
+            this.$emit('read-mail', this.mail.id)
+        },
+        starMail() {
+            this.$emit('star-mail', this.mail.id)
+        },
+        deleteMail() {
+            this.$emit('delete-mail', this.mail.id)
+        }
     },
     computed: {
         isRead() {
@@ -58,6 +65,22 @@ export default {
             // console.log(typeof sentAtDate.getFullYear());
             if (sentAtDate.getFullYear() === 2022) return sentAtDate.toLocaleString('en-US', { month: 'short', day: 'numeric' })
             else return sentAtDate.toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })
+        },
+        starForDisplay() {
+            if (this.mail.isStarred) return `/png/003-star.png`
+            else if (!this.mail.isStarred) return `/png/008-star-1.png`
+        },
+        titleStarred() {
+            if (this.mail.isStarred) return "Unstar mail"
+            else if (!this.mail.isStarred) return "Star this mail"
+        },
+        readForDiaplay() {
+            if (this.mail.isRead) return '/png/010-read-1.png'
+            else if (!this.mail.isRead) return '/png/007-unread.png'
+        },
+        titleRead() {
+            if (this.mail.isRead) return "Set as Unread"
+            else if (!this.mail.isRead) return "Set as Read"
         }
     }
 }

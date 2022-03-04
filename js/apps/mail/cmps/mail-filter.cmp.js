@@ -1,13 +1,15 @@
 export default {
     template: `
           <section class="mail-filter-container">
-              <form action="" type="submit" class="mail-filter">
+              <form action="" type="submit" class="mail-filter flex evenly align">
                     <label>
                         Sarch mail:
-                        <input type="text" v-model="filterBy.searchKey" placeholder="search by from">
+                        <input type="text" v-model="filterBy.searchKey" placeholder="search...">
+                        <button @click.prevent="setFilter">Search</button>
                     </label>
-                    <button @click.prevent="setFilter">Search</button>
+                        
                     <label for="mail-choice">
+                        Filter:
                         <input list="mail-choice-list" id="mail-choice" name="mail-choice" v-model="filterBy.label" @change="setFilter"/>
                             <datalist id="mail-choice-list">
                                 <option value="All"></option>

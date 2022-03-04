@@ -15,7 +15,20 @@
 }
 
 .mail-list li:hover {
-  background-color: lightgray;
+  /* border-bottom: 3px solid black; */
   cursor: pointer;
+  /* box-shadow: 0 2px 4px 0 #292929; */
+  /* background: #e1e1e1;
+  border-top: 1px solid #d0d0d0;
+  padding-top:0; */
 }
 
+.mail-title-subject-container {
+  flex-grow: 1;
+}
+
+.clean-list {
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
