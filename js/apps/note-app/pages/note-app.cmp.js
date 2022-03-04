@@ -6,8 +6,8 @@ export default {
   template: `
   <note-app>
     <div class="main-note flex warp">
-      <h1>note</h1>
-      <note-list :notes="notes" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
+     
+      <note-list :notes="notes" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
     </div>
   </note-app>
 `,
@@ -34,9 +34,12 @@ components: {
         this.notes.splice(idx, 1);
       })
     },
-    addNote(txt,selector) {
-      console.log(txt);
-      noteService.createNote(txt)
+    removeTodo(id,todo){
+      console.log(todo);
+    },
+    addNote(input,type) {
+      // console.log(txt);
+      noteService.createNote(input,type)
       .then(note => {
         this.notes.push(note)
         

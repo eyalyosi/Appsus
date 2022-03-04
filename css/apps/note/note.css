@@ -43,3 +43,28 @@
 .dane{
     text-decoration: line-through;
 } 
+
+.add-note {
+    margin-top: 15px;
+    /* align-items: center; */
+}
+
+.add-note button {
+    background-color: rgb(255, 236, 64);
+    border-radius: 1rem;
+    color: rgb(95, 86, 95);
+    border: 2px solid rgb(214, 214, 214);
+    height: 3rem;
+
+}
+
+.add-note input {
+    border-radius:2rem ;
+    width: 250px;
+}
+
+.todo-ul {
+    justify-content: flex-start;
+    /* flex-direction: column; */
+    
+}

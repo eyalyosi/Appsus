@@ -10,7 +10,7 @@ template:`
 <section v-if="notes" class="note-preview flex wrap " >
    
   <div v-for="cmp in notes"  :style="{backgroundColor:cmp.info.color}">
-      <component :is="cmp.type" :cmp="cmp"  ></component>        
+      <component :is="cmp.type" :cmp="cmp" @removeTodo="removeTodo" ></component>        
         <button @click="remove(cmp.id)">X</button>
         <input v-model="color" type="color" @input="noteColor(cmp.id)">
   </div>
@@ -41,6 +41,9 @@ methods:{
     },
     remove(id) {
         this.$emit('remove',id)
+    },
+    removeTodo(id,todo) {
+        this.$emit('removeTodo',id,todo)
     }
 
 },

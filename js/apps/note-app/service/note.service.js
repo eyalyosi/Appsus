@@ -97,7 +97,7 @@ function getNotes(){
       id:"n104",
       info: {
         label: 'Todo',
-        txt: ['eat','take a shawer'],
+        todo: ['eat','take a shawer'],
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -107,7 +107,7 @@ function getNotes(){
       id:"n105",
       info: {
         label: 'Todo',
-        txt: ['finish the sprint','love','do something'],
+        todo: ['finish the sprint','love','do something'],
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -117,7 +117,8 @@ function getNotes(){
       id:"n106",
       info: {
         label: 'Video',
-        txt: 'watch?v=Su4Gv-cwpWI&list=RDSu4Gv-cwpWI&index=1',
+        url: 'https://www.youtube.com/watch?v=Su4Gv-cwpWI&list=RDSu4Gv-cwpWI&index=2',
+        // url: 'watch?v=Su4Gv-cwpWI&list=RDSu4Gv-cwpWI&index=1',
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -127,7 +128,7 @@ function getNotes(){
       id:"n107",
       info: {
         label: 'Image',
-        txt: 'https://i.picsum.photos/id/234/200/300.jpg?hmac=KD9xFDCez7-lqgcMm-EEi7BtpClIdCzJS6YvFVyLiDs',
+        url: 'https://i.picsum.photos/id/234/200/300.jpg?hmac=KD9xFDCez7-lqgcMm-EEi7BtpClIdCzJS6YvFVyLiDs',
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -151,18 +152,37 @@ function remove(noteId) {
    .then(notes => notes)
 }
 
-function createNote(txt ,type='textNote') {
-  console.log(txt);
+function createNote(input ,type) {
+  // console.log(txt);
 const note = {
   type,
   id: '',
   info: {
-    label:'Note',
-    txt,
+    // label:'Note',
+    // txt,
     color:'rgb(246, 239, 239)',
     isPinned:false
   }
 }
+ switch (type) {
+   case 'textNote':
+     note.info.label='Note'
+     note.info.txt= input
+     break;
+   case 'noteImg':
+     note.info.label='Image';
+     note.info.url= input;
+     break;
+   case 'noteVideo':
+     note.info.label='Video';
+     note.info.url= input;
+     break;
+   case 'noteTodo':
+     var todos = input.split(',')
+     note.info.label='Todo';
+     note.info.todo= todos;
+     break;
+ } 
 return storageService.post(KEY_NOTE,note)
 }
 

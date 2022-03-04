@@ -5,6 +5,8 @@ template:`
         <div>
             <h4>cmp.info.label</h4><hr>
             <iframe width="350" height="280" :src="setVideoUrl"></iframe>
+            <br>
+            <a :href="setUrl">see full video</a><hr>
         </div>
     </section>
 `,
@@ -15,7 +17,12 @@ created(){},
 methods:{},
 computed:{
     setVideoUrl(){
-    return 'https://www.youtube.com/embed/'+ this.cmp.info.txt
+        var idx = this.cmp.info.url.indexOf('.com')
+        return 'https://www.youtube.com/embed/'+ this.cmp.info.url.substring(idx)
+        
+    },
+    setUrl(){
+        return this.cmp.info.url
     }
 },
 }
