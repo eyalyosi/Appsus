@@ -7,16 +7,15 @@ import mailCompose from '../cmps/mail-compose.cmp.js'
 
 export default {
     template: `
-    <h1>mail</h1>
+    
         <section class="mail-app main-layout">
             <mail-filter @filtered="setFilter"/>
             <div class="flex space">
                 <mail-folder-list @filter="setFilter" :unreadMailsCount="unreadMailsCount" @show-compose="showComposeMail" @Show-Sent="setFilter"/>
+                <mail-list v-if="showMails" :mails="mailToDisplay" @mail-selected="setSelectedMail"></mail-list>
                 <mail-details v-if="selectedMail" :mail="selectedMail" @remove="removeMail"/>
-                <mail-list v-if="mails" :mails="mailToDisplay" @mail-selected="setSelectedMail"></mail-list>
                 <mail-compose v-if="isCompuse" @add-new-mail="add"/>
             </div>
-        <!-- <button @click="puki">puki</button> -->
         </section>
     `,
     components: {
@@ -36,7 +35,8 @@ export default {
                 searchKey: '',
                 label: 'All',
                 isRead: null
-            }
+            },
+            showMails: true
         }
     },
     created() {
@@ -49,27 +49,27 @@ export default {
                     this.mails = mails
                 })
         },
-        setSelectedMail(mail) {
-            mailService.save(mail)
+        setSelectedMail(selectedMail) {
+            selectedMail.isRead = true
+            mailService.save(selectedMail)
                 .then(() => {
-                    this.selectedMail = mail
-                    mail.isRead = true
-
+                    this.selectedMail = selectedMail
+                    this.showMails = false
                     this.mails = [...this.mails]
-                    // this.mails = null
                 })
         },
         showInbox() {
             this.selectedMail = null
+            this.isCompuse = false
+            this.showMails = true
         },
         removeMail(id) {
             mailService.remove(id)
                 .then(() => {
                     const idx = this.mails.findIndex((mail) => mail.id === id);
                     this.mails.splice(idx, 1)
-                    this.mails = [...this.mails]
                     this.selectedMail = null
-                    // showSuccessMsg('Deleted succesfully');
+                    this.showMails = true
                 })
         },
         unreadForDisplay() {
@@ -79,25 +79,35 @@ export default {
         },
         showComposeMail() {
             this.selectedMail = null
-            this.mails = null
+            this.showMails = false
             this.isCompuse = true
         },
         setFilter(filterBy) {
             this.isCompuse = false
             this.selectedMail = null
+            this.showMails = true
             this.filterBy = filterBy
         },
         add(newMail) {
-            // console.log(newMail);
-            // mailService.addNewMail(newMail)
-            //     .then(() => this.getMails())
+            mailService.addNewMail(newMail)
+                .then((newMailSaved) => {
+                    // this.mails.push(newMailSaved)
+                    this.mails = [...this.mails, newMailSaved]
+                    this.showMails = true
+                    this.isCompuse = false
+                })
         }
     },
     computed: {
         mailToDisplay() {
-            if (!this.filterBy) return this.mails
-            if (!this.mails) return
+            // console.log('this.mails', this.mails);
+            if (!this.filterBy) {
+                console.log('no filter by');
+                return this.mails
+            }
+            if (!this.mails) return console.log('no mails...')
             if (this.filterBy.label === 'All') {
+                console.log('All')
                 return this.mails.filter((mail) => (!mail.isSent))
             }
             if (this.filterBy.label === 'Read') {
