@@ -6,7 +6,7 @@ export default {
   <note-app>
     <div class="main-note flex warp">
      
-      <note-list :notes="notes" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
+      <note-list :notes="notes" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
     </div>
   </note-app>
 `,
@@ -30,6 +30,13 @@ export default {
         const idx = this.notes.findIndex((note) => note.id === id);
         this.notes.splice(idx, 1);
       });
+    },
+    checkList(id,idx){
+      noteService.changeTodoStatus(id,idx)
+      .then(note => {
+        const Idx = this.notes.findIndex(Note => Note.id === id)
+        this.notes.splice(Idx, 1, note);
+      })
     },
     removeTodo(id, todo) {
       noteService.removeTodo(id, todo).then((Note) => {

@@ -34,13 +34,22 @@
 } 
 
 .todo {
-    
+    margin-inline-end: 5px;
     padding: 5px;
     cursor: pointer;
-
 }
 
-.dane{
+.todo-div {
+    justify-content: space-between;
+}
+
+.todo-div button{
+    border: 0;
+    cursor: pointer;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.done{
     text-decoration: line-through;
 } 
 
@@ -64,7 +73,5 @@
 }
 
 .todo-ul {
-    justify-content: flex-start;
-    /* flex-direction: column; */
-    
+    padding:0px 0px 0px 20px; 
 }

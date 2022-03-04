@@ -13,7 +13,7 @@ export default {
  <div class="note-list">
     <!-- <ul class="flex evenly wrap"> -->
         <!-- <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}"> -->
-            <note-preview @color="noteColor" @remove="remove" @removeTodo="removeTodo" :notes="notes" />
+            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" />
             </div>
             <!-- <input v-model="color" type="color" @input="noteColor(note)"> -->
           <!-- </li> -->
@@ -46,6 +46,9 @@ export default {
     },
     removeTodo(id,todo){
         this.$emit('removeTodo',id,todo)
+    },
+    check(id,idx){
+      this.$emit('check',id,idx)
     },
     noteSelector(selector) {
           this.selector = selector

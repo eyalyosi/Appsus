@@ -8,6 +8,7 @@ export const noteService = {
   get,
   changeNoteColor,
   removeTodo,
+  changeTodoStatus,
 
 };
 const KEY_NOTE = "notes";
@@ -210,5 +211,16 @@ function removeTodo(id,Todo) {
     var todoIdx = note.info.todo.findIndex(todo => todo.txt === Todo.txt)
     note.info.todo.splice(todoIdx,1)
     return storageService.put(KEY_NOTE,note)
+  })
+}
+
+function changeTodoStatus(noteId,todoIdx){
+  return get(noteId).then(note => {
+    if(note.info.todo[todoIdx].isDone){
+      note.info.todo[todoIdx].isDone = false
+    } else {
+      note.info.todo[todoIdx].isDone = true
+    }
+      return storageService.put(KEY_NOTE,note)
   })
 }

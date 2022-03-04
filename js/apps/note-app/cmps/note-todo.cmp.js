@@ -6,7 +6,7 @@ template:`
         <!-- <button  @click="remove(cmp.id)">X</button> -->
         <h4>{{cmp.info.label}}</h4><hr>
        <ul class="todo-ul">
-           <li class="todo" v-for="(todo,idx) in cmp.info.todo" @click="checkList(cmp.id,idx)">{{todo.txt}} <button @click.stop="remove(cmp.id,todo)">X</button></li>
+            <div v-for="(todo,idx) in cmp.info.todo" class="todo-div flex"><li class="todo" :class="todo.isDone ? 'done' : ''" @click="checkList(cmp.id,idx)">{{todo.txt}} </li><button @click.stop="remove(cmp.id,todo)">X</button></div>
        </ul>
     </div>
 </section>
@@ -19,7 +19,7 @@ data() {
 created(){},
 methods:{
     checkList(id,idx){
-        
+        this.$emit('check',id,idx)
        console.log(id);
        console.log(idx);
     },
@@ -28,8 +28,8 @@ methods:{
     }
 },
 computed:{
-    check(){
-        return this.isDane ? 'dane' : ''
+    checkStatus(todo){
+        return todo.isDone ? 'done' : ''
     }
 },
 }
