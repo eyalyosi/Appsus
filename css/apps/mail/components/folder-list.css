@@ -1,13 +1,39 @@
 /* folder list */
-.mail-folder-list {
-    border: 1px solid black;
-  }
-  
-  .folder-items li {
-    border-top: 1px solid black;
-  }
-  
-  .mail-folder-list > *:hover {
-    background-color: lightgray;
-    cursor: pointer;
-  }
+.folder-list {
+  width: 180px;
+  height: 300px;
+  /* border: 1px solid black; */
+  padding-top: 15px;
+  padding-right: 5px;
+}
+
+.folder-list > * {
+  font-size: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 10px;
+}
+
+.folder-list > *:hover {
+  background-color: rgb(245, 230, 230);
+  cursor: pointer;
+}
+
+.compose-mail {
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.compose-mail:hover {
+  cursor: pointer;
+  color: lightcoral;
+  transition: 0.3s;
+}
+
+

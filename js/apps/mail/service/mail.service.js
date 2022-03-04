@@ -47,7 +47,6 @@ function addNewMail(mail) {
         subject: mail.subject,
         body: mail.body,
         to: mail.to,
-        id: utilService.makeId(),
         isRead: true,
         isStarred: false,
         sentAt: new Date(),
