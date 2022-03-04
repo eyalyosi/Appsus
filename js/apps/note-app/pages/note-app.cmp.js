@@ -1,6 +1,5 @@
 import { noteService } from "../service/note.service.js";
-import noteList from '../cmps/note-list.cmp.js'
-
+import noteList from "../cmps/note-list.cmp.js";
 
 export default {
   template: `
@@ -11,50 +10,49 @@ export default {
     </div>
   </note-app>
 `,
-components: {
-  noteList,
-},
+  components: {
+    noteList,
+  },
   data() {
     return {
-      notes:null,
+      notes: null,
     };
   },
   created() {
-    noteService.getNotes()
-    .then(note => {
-      this.notes = note
+    noteService.getNotes().then((note) => {
+      this.notes = note;
       console.log(this.notes);
-    })
+    });
   },
   methods: {
     removeNote(id) {
-      noteService.remove(id)
-      .then(notes => {
+      noteService.remove(id).then((notes) => {
         const idx = this.notes.findIndex((note) => note.id === id);
         this.notes.splice(idx, 1);
-      })
+      });
     },
-    removeTodo(id,todo){
-      noteService.removeTodo(id,todo)
-      
-      console.log(todo);
+    removeTodo(id, todo) {
+      noteService.removeTodo(id, todo).then((Note) => {
+        if (Note.info.todo.length === 0) {
+          this.removeNote(id);
+        } else {
+          var idx = this.notes.findIndex((note) => note.id === id);
+          this.notes.splice(idx, 1, Note);
+        }
+      });
     },
-    addNote(input,type) {
+    addNote(input, type) {
       // console.log(txt);
-      noteService.createNote(input,type)
-      .then(note => {
-        this.notes.push(note)
-        
-      })
+      noteService.createNote(input, type).then((note) => {
+        this.notes.push(note);
+      });
     },
-    noteColor(id,color){
+    noteColor(id, color) {
       const currNote = this.notes.find((note) => note.id === id);
-      currNote.info.color = color
+      currNote.info.color = color;
       console.log(currNote);
-      noteService.changeNoteColor(currNote)
-    }
-        
-           
+      noteService.changeNoteColor(currNote);
+    },
   },
   computed: {},
 };

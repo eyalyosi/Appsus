@@ -6,7 +6,7 @@ template:`
         <!-- <button  @click="remove(cmp.id)">X</button> -->
         <h4>{{cmp.info.label}}</h4><hr>
        <ul class="todo-ul">
-           <li class="todo" v-for="(todo,idx) in cmp.info.todo" @click="checkList(cmp.id,idx)">{{todo}} <button @click.stop="remove(cmp.id,todo)">X</button></li>
+           <li class="todo" v-for="(todo,idx) in cmp.info.todo" @click="checkList(cmp.id,idx)">{{todo.txt}} <button @click.stop="remove(cmp.id,todo)">X</button></li>
        </ul>
     </div>
 </section>

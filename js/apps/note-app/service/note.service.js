@@ -7,6 +7,7 @@ export const noteService = {
   createNote,
   get,
   changeNoteColor,
+  removeTodo,
 
 };
 const KEY_NOTE = "notes";
@@ -97,7 +98,8 @@ function getNotes(){
       id:"n104",
       info: {
         label: 'Todo',
-        todo: ['eat','take a shawer'],
+        todo: [{txt:'eat',isDone: false},{txt:'take a shawer',isDone: false}],
+        // todo: ['eat','take a shawer'],
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -107,7 +109,7 @@ function getNotes(){
       id:"n105",
       info: {
         label: 'Todo',
-        todo: ['finish the sprint','love','do something'],
+        todo: [{txt:'finish the sprint',isDone: false},{txt:'love',isDone: false},{txt:'do something',isDone: false}],
         color: 'rgb(246, 239, 239)',
         isPinned: false,
       }
@@ -179,8 +181,11 @@ const note = {
      break;
    case 'noteTodo':
      var todos = input.split(',')
+     const nTodo = todos.map(todo => {
+        return {txt: todo , isDone: false}
+     })
      note.info.label='Todo';
-     note.info.todo= todos;
+     note.info.todo= nTodo;
      break;
  } 
 return storageService.post(KEY_NOTE,note)
@@ -199,7 +204,11 @@ function changeNoteColor(note) {
   .then(note => note)
 }
 
-function removeTodo() {
-    
-  var cmpIdx = 
+function removeTodo(id,Todo) {
+  return query().then(notes => {
+    var note = notes.find(note => note.id === id)   
+    var todoIdx = note.info.todo.findIndex(todo => todo.txt === Todo.txt)
+    note.info.todo.splice(todoIdx,1)
+    return storageService.put(KEY_NOTE,note)
+  })
 }
