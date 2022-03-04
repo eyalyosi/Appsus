@@ -35,6 +35,8 @@ components: {
       })
     },
     removeTodo(id,todo){
+      noteService.removeTodo(id,todo)
+      
       console.log(todo);
     },
     addNote(input,type) {

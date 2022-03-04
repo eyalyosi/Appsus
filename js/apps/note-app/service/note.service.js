@@ -198,3 +198,8 @@ function changeNoteColor(note) {
   return storageService.put(KEY_NOTE,note)
   .then(note => note)
 }
+
+function removeTodo() {
+    
+  var cmpIdx = 
+}
