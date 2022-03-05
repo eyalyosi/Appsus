@@ -6,7 +6,7 @@ export default {
             <div>
                 <form class="mail-container">
                     <div><h3>New Message</h3></div>
-                    <div><input type="email" v-model="newMail.mailTo" class="input" placeholder="To"></div>
+                    <div><input type="email" v-model="newMail.mailTo" class="input" placeholder="To" requierd></div>
                     <div><input type="text" placeholder="Subject" v-model="newMail.subject" class="input"  placeholder="Subject"></div>
                     <div class="text-area-container"><textarea rows="10" cols="50" class="text-area" v-model="newMail.body" class="input"></textarea></div>
                     <div class="compose-buttons flex space align"><button @click.prevent="saveMail" class="compose-btn">Send</button><button @click.prevent="deleteMail" class="compose-btn"><img src="./png/006-delete.png" alt=""></button></div>
