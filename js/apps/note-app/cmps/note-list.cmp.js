@@ -13,14 +13,8 @@ export default {
   </div>  
   <h1>Notes</h1>
  <div class="note-list">
-    <!-- <ul class="flex evenly wrap"> -->
-        <!-- <li v-for="note in notes" class="clean-list blue" :style="{backgroundColor:note.color}"> -->
-            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" />
+            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" @copy="copy" />
             </div>
-            <!-- <input v-model="color" type="color" @input="noteColor(note)"> -->
-          <!-- </li> -->
-        <!-- </ul> -->
-        
 </section>
 `,
   components: {
@@ -39,6 +33,9 @@ export default {
   methods: {
     remove(id) {
       this.$emit("remove", id);
+    },
+    copy(note){
+      this.$emit("copy", note);
     },
     filtered(filter){
       this.$emit('filtered',filter)

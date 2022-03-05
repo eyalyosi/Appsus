@@ -13,6 +13,7 @@ template:`
       <component :is="cmp.type" :cmp="cmp" @check="check" @removeTodo="removeTodo" ></component>        
         <button @click="remove(cmp.id)">X</button>
         <input v-model="color" type="color" @input="noteColor(cmp.id)">
+        <button @click="copy(cmp)">copy</button>
   </div>
 </section>
 `,
@@ -47,6 +48,9 @@ methods:{
     },
     check(id,idx){
         this.$emit('check',id,idx)
+    },
+    copy(note){
+        this.$emit('copy',note)
     }
 
 },

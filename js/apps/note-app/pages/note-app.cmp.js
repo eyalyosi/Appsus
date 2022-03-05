@@ -7,7 +7,7 @@ export default {
   <note-app>
     <div class="main-note flex warp">
       <!-- <note-filter class="filter"/> -->
-      <note-list :notes="noteForDisplay" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter"></note-list>
+      <note-list :notes="noteForDisplay" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter" @copy="copyNote"></note-list>
     </div>
   </note-app>
 `,
@@ -69,6 +69,12 @@ export default {
       console.log(currNote);
       noteService.changeNoteColor(currNote);
     },
+    copyNote(note){
+      const idx = this.notes.findIndex(Note => Note.id===note.id)
+      noteService.copyNote(note).then((note) => {
+        this.notes.splice(idx,0,note);
+      });
+    }
   },
   computed: {
     noteForDisplay(){
@@ -76,10 +82,23 @@ export default {
       if(this.filterBy.searchKey === '') {
         return this.notes.filter(note => note.info.label === this.filterBy.label)
       }
-      const regex = new RegExp(this.filterBy.searchKey, 'i')
-      return this.notes.filter(note => {
-        regex.test(note.info.txt)&& note.info.label === this.filterBy.label
-      })
+      var regex = new RegExp(this.filterBy.searchKey, 'i')
+      if(this.filterBy.label==='All' ||this.filterBy.label==='Note') {
+      var display = this.notes.filter(note => {
+          return regex.test(note.info.txt)  })
+        } else if(this.filterBy.label==='Todo') {
+        display = this.notes.filter(note => regex.test(note.info.todo[0].txt))
+        //  todo a filter of note todo
+            
+        }
+      
+      return display
     }
   },
 };
+
+// checkTodo(note){
+//   var regex = new RegExp(this.filterBy.searchKey, 'i')
+
+//   return
+// }       
