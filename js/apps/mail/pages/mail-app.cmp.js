@@ -10,7 +10,7 @@ export default {
     
         <section class="mail-app main-layout">
             <mail-filter @filtered="setFilter" />
-            <div class="flex space">
+            <div class="main-mail flex space">
                 <mail-folder-list @filter="setFilter" :unreadMailsCount="unreadMailsCount" @show-compose="showComposeMail" @Show-Sent="setFilter" @Show-Starred="setFilter"/>
                 <mail-list v-if="showMails" :mails="mailToDisplay" @mail-selected="setSelectedMail" @update-Star="setStarred" @update-Read="setReadUnread" @delete-mail="removeMail"></mail-list>
                 <mail-details v-if="selectedMail" :mail="selectedMail" @remove="removeMail"/>
@@ -138,7 +138,6 @@ export default {
             else if (this.filterBy.isSent) {
                 return this.mails.filter((mail) => (mail.isSent))
             }
-            console.log(this.filterBy.searchKey);
             const regex = new RegExp(this.filterBy.searchKey, 'i')
             return this.mails.filter((mail) => (regex.test(mail.subject) || regex.test(mail.body) ||
                 regex.test(mail.body) || regex.test(mail.to) || regex.test(mail.from)) && (!mail.isSent))

@@ -10,7 +10,6 @@ export const mailService = {
     save,
     get,
     addNewMail,
-    // getEmptyMail,
 };
 
 function query() {

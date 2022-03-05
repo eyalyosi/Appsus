@@ -1,7 +1,5 @@
 import { noteService } from '../../note-app/service/note.service.js'
 
-// TODO text area
-
 export default {
     template: `
        <section class="compose-mail-container">
@@ -31,7 +29,6 @@ export default {
         const id = this.$route.params.noteId
         noteService.get(id)
             .then(note => {
-                // console.log(note);
                 if (!note) return
                 this.newMail.body = note.info.txt
             })
@@ -42,12 +39,6 @@ export default {
             if (!this.newMail.subject) alert('Are you sure you want to send this email without a subject?')
             this.$emit('add-new-mail', { ...this.newMail })
         },
-        noteId() {
-            // return this.$route.params.noteId
-        },
-        deleteMail() {
-
-        }
     },
     computed: {
     }

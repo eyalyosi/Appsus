@@ -2,10 +2,10 @@ export default {
     props: ['mail'],
     template: `
             <div class="single-mail-container flex space align" :class="unRead">
-                <div @click.stop="starMail" :title="titleStarred"><img :src="starForDisplay"></div>
-                <div class="mail-from" :class="isRead">
-                         {{fromDisplay}}
-                </div >
+                <div class="from-star-box flex space align">
+                    <div @click.stop="starMail" :title="titleStarred" class="star-box"><img :src="starForDisplay"></div>
+                    <div class="mail-from" :class="isRead">{{fromDisplay}}</div >
+                </div>
                 <span class="mail-title-subject-container">
                     <span :class="isRead">{{mail.subject}} - </span>
                     <span class="body-span"> {{bodyText}}</span>
@@ -57,7 +57,6 @@ export default {
             if (diff > -86400000) {
                 return sentAtDate.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit' })
             }
-            // console.log(typeof sentAtDate.getFullYear());
             if (sentAtDate.getFullYear() === 2022) return sentAtDate.toLocaleString('en-US', { month: 'short', day: 'numeric' })
             else return sentAtDate.toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })
         },

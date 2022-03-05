@@ -10,8 +10,12 @@
   padding: 3px;
 }
 
+.from-star-box {
+  min-width: 150px;
+}
+
 .mail-from {
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .read-and-delet {
@@ -42,18 +46,7 @@
   display: none;
 }
 
-.body-span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* .mail-preview-container .mail-title-subject-container {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-} */
-
-/* .single-mail-container .mail-title-subject-container {
+/* .body-span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
