@@ -1,0 +1,20 @@
+/* Medium */
+
+@media (max-width: 1020px) {
+  .home-page {
+    flex-direction: column;
+  }
+  .home-page img {
+    max-width: 700px;
+    max-height: 700px;
+    object-fit: cover;
+  }
+}
+
+/* mobile */
+@media (max-width: 760px) {
+  .home-page img {
+    max-width: 500px;
+    max-height: 500px;
+  }
+}

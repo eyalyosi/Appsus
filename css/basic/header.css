@@ -1,7 +1,29 @@
 .app-header {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 .main-header {
-    padding: 20px;
+  padding: 10px;
+}
+
+.logo {
+  font-family: "Courier New";
+  letter-spacing: 1px;
+  font-size: 40px;
+}
+
+.logo h2 {
+  padding: 15px;
+  margin: 0;
+}
+
+.nav-bar {
+  font-size: 25px;
+}
+.nav-bar > * {
+  text-decoration: none;
+}
+
+.nav-bar > *:hover {
+  text-decoration: underline;
 }

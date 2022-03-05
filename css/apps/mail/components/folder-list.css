@@ -3,7 +3,7 @@
   width: 180px;
   height: 300px;
   padding-top: 15px;
-  padding-right: 15px; 
+  padding-right: 15px;
   padding-bottom: 15px;
 }
 
@@ -21,6 +21,7 @@
 }
 
 .compose-mail {
+  width: 150px;
   font-size: 25px;
   border: 1px solid black;
   border-radius: 20px;
@@ -40,3 +41,8 @@
 .unread {
   padding-right: 5px;
 }
+
+.compose-mail img {
+  height: 25px;
+}
+

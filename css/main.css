@@ -19,4 +19,6 @@
 @import "apps/mail/components/mail-compose.css";
 @import "apps/mail/components/mail-filter.css";
 
+/* media queries */
 @import "apps/mail/media-queries.css";
+@import "basic/home-media-queries.css";

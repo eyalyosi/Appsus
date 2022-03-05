@@ -94,7 +94,7 @@ export default {
             mailService.addNewMail(newMail)
                 .then((newMailSaved) => {
                     // this.mails.push(newMailSaved)
-                    this.mails = [...this.mails, newMailSaved]
+                    this.mails = [newMailSaved, ...this.mails]
                     this.showMails = true
                     this.isCompuse = false
                 })
