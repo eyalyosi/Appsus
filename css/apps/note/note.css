@@ -13,7 +13,7 @@
 .note-list {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
 }
 
 .main-note {
@@ -30,7 +30,8 @@
 }
 
 .note-preview p {
-    padding: 5px;
+    padding: 10px;
+    
 } 
 
 .filter {
@@ -73,7 +74,7 @@
 
 .add-note input {
     border-radius:2rem ;
-    width: 250px;
+    max-width: 250px;
 }
 
 .todo-ul {
@@ -83,7 +84,45 @@
 .note-header h4 {
     display: inline-block;
 }
+.color {
+    position: absolute;
+    width: 25px;
+    opacity: 0;
+    margin: 5px;
+}
 
-/* .notw-card {
-    max-width: 400px;
-} */
+.poinetr {
+    cursor: pointer;
+}
+
+.link {
+    font-size: 15px;
+  text-decoration: none;
+  /* border: 1px solid black; */
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.link:hover{
+    background-color: rgb(245, 230, 230);
+
+}
+
+.btn {
+    /* justify-content: space-evenly; */
+  
+}
+
+
+
+
+.pin-contaner { 
+    display: flex;
+    gap: 10px;
+    max-width:fit-content;
+}
+
+.note-card {
+    height:fit-content ; 
+    max-width: 450px;
+}

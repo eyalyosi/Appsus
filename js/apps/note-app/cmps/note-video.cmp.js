@@ -2,7 +2,7 @@ export default {
     props: ['cmp'],
 template:`
     <section>
-        <div>
+        <div class="video">
             <h4>cmp.info.label</h4><img src="/imge/002-tack.png" ><hr>
             <iframe width="350" height="280" :src="setVideoUrl"></iframe>
             <br>
