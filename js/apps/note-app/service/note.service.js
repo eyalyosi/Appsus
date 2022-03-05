@@ -10,6 +10,7 @@ export const noteService = {
   removeTodo,
   changeTodoStatus,
   copyNote,
+  setPining
 };
 const KEY_NOTE = "notes";
 var gNotes = utilService.loadFromStorage(KEY_NOTE);
@@ -87,7 +88,7 @@ function getNotes(){
     {
       type : 'textNote',
       id:"n103",
-      isPinned: false,
+      isPinned: true,
       info: {
         label: 'Note',
         txt: ' adipisicing elit. Sequi, molestiae.',
@@ -97,7 +98,7 @@ function getNotes(){
     {
       type : 'noteTodo',
       id:"n104",
-      isPinned: true,
+      isPinned: false,
       info: {
         label: 'Todo',
         todo: [{txt:'eat',isDone: false},{txt:'take a shawer',isDone: false}],
@@ -108,7 +109,7 @@ function getNotes(){
     {
       type : 'noteTodo',
       id:"n105",
-      isPinned: true,
+      isPinned: false,
       info: {
         label: 'Todo',
         todo: [{txt:'finish the sprint',isDone: false},{txt:'love',isDone: false},{txt:'do something',isDone: false}],
@@ -143,7 +144,9 @@ utilService.saveToStorage(KEY_NOTE, gNotes);
 return query(KEY_NOTE).then((notes) => notes);
 }
 
-
+function setPining(note){
+return storageService.put(KEY_NOTE,note)
+}
 
 function query() {
   return storageService.query(KEY_NOTE);

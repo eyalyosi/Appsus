@@ -13,7 +13,7 @@ export default {
   </div>  
   <h1>Notes</h1>
  <div class="note-list">
-            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" @copy="copy" :pinned="pinned"/>
+            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" @copy="copy" @pin="pin" :pinned="pinned"/>
             </div>
 </section>
 `,
@@ -33,6 +33,9 @@ export default {
   methods: {
     remove(id) {
       this.$emit("remove", id);
+    },
+    pin(note){
+this.$emit('pin',note)
     },
     copy(note){
       this.$emit("copy", note);

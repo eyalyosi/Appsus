@@ -1,6 +1,6 @@
 export default {
 template:`
-    <section>
+    <section class="note-filter flex evenly align">
     <label>
             Search Note:
             <input type="text" v-model="filterBy.searchKey" placeholder="search by from" @input="setFilter" @focus="filterBy.searchKey = ''">

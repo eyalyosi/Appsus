@@ -16,10 +16,15 @@
     /* justify-content: flex-start; */
 }
 
+.note-filter {
+    height: 80px;
+    font-size: 20px;
+}
+
 .main-note {
-    width: 85vw;
+    /* width: 85vw; */
     margin: 0 auto;
-    background-color: aqua;
+ 
     margin-bottom: 20px;
 }
 
@@ -69,7 +74,11 @@
     color: rgb(95, 86, 95);
     border: 2px solid rgb(214, 214, 214);
     height: 3rem;
+    cursor: pointer;
+}
 
+.add-note button:hover {
+    background-color:rgb(231, 208, 0) ;
 }
 
 .add-note input {
@@ -92,6 +101,10 @@
 }
 
 .poinetr {
+    cursor: pointer;
+}
+
+.poinetr:hover {
     cursor: pointer;
 }
 
@@ -123,6 +136,8 @@
 }
 
 .note-card {
+    padding: 5px;
+    border-radius: 10px;
     height:fit-content ; 
     max-width: 450px;
 }

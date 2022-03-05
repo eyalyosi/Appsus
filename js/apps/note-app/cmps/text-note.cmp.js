@@ -3,7 +3,7 @@ export default {
 template:`
 <section >
     <div>
-    <h4>{{cmp.info.label}}</h4><hr>
+    <h4>{{cmp.info.label}}</h4><img src="/imge/002-tack.png" @click="pining(cmp)"><hr>
     <p>{{cmp.info.txt}}</p>
     </div>
 </section>
@@ -15,10 +15,9 @@ data() {
 },
 created(){},
 methods:{
-    // remove(id){
-    //     console.log(id);
-    //     this.$emit('remove', id)
-    // },
+    pining(note){
+        this.$emit('pin',note)
+    },
     noteColor(id){
         this.cmp.info.color = this.color
         this.$emit('color', id, this.color)

@@ -5,9 +5,9 @@ import noteFilter from "../cmps/note-filter.cmp.js";
 export default {
   template: `
   <note-app>
-    <div class="main-note flex warp">
+    <div class="main-note flex warp main-layout">
       <!-- <note-filter class="filter"/> -->
-      <note-list  :notes="noteForDisplay" :pinned="pininigNote" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter" @copy="copyNote"></note-list>
+      <note-list  :notes="noteForDisplay" :pinned="pininigNote" @pin="setPining" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter" @copy="copyNote"></note-list>
     </div>
   </note-app>
 `,
@@ -30,6 +30,15 @@ export default {
     });
   },
   methods: {
+    setPining(note){
+      note.isPinned = !note.isPinned
+      noteService.update(note)
+      .then(Note=> {
+        log(Note)
+        const idx = this.notes.findIndex((note) => note.id === Note.id);
+        this.notes.splice(idx, 1,Note);
+      })
+    },
     removeNote(id) {
       noteService.remove(id).then((notes) => {
         const idx = this.notes.findIndex((note) => note.id === id);
