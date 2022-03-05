@@ -4,13 +4,13 @@ export default {
               <form action="" type="submit" class="mail-filter flex evenly align">
                     <label>
                         Sarch mail:
-                        <input type="text" v-model="filterBy.searchKey" placeholder="search...">
+                        <input type="text" v-model="filterBy.searchKey" placeholder="search..." @focus="filterBy.searchKey=''">
                         <button @click.prevent="setFilter">Search</button>
                     </label>
                         
                     <label for="mail-choice">
                         Filter:
-                        <input list="mail-choice-list" id="mail-choice" name="mail-choice" v-model="filterBy.label" @change="setFilter"/>
+                        <input list="mail-choice-list" id="mail-choice" name="mail-choice" v-model="filterBy.label" @change="setFilter" @click="filterBy.label=''"/>
                             <datalist id="mail-choice-list">
                                 <option value="All"></option>
                                 <option value="Read"></option>

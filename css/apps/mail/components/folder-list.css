@@ -2,7 +2,6 @@
 .folder-list {
   width: 180px;
   height: 300px;
-  /* border: 1px solid black; */
   padding-top: 15px;
   padding-right: 5px;
 }
@@ -36,6 +35,3 @@
   transition: 0.3s;
 }
 
-.compose-mail img {
-  color: red;
-}

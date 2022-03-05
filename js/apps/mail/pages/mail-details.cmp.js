@@ -3,8 +3,11 @@ export default {
     template: `
         <section class="mail-show-container">
             <div class="mail-show">
-                <p>{{mail.subject}}<button @click="remove(mail.id)"><img src="./png/006-delete.png" alt=""></button></p>
-                <h4><span>{{mail.from}}</span><span>{{mail.to}}</span></h4>
+                <div class="detail-header flex space">
+                    <span class="detail-mail-subject">{{mail.subject}}</span>
+                    <button class="btn-delete" @click="remove(mail.id)"><img src="./png/006-delete.png" alt=""></button>
+                </div>
+                <h4><span>{{fromDisplay}}</span> - <span>{{mail.from}}</span></h4>
                 <div class="mail-body">
                     {{mail.body}}
                 </div>
@@ -25,6 +28,11 @@ export default {
         },
     },
     computed: {
+        fromDisplay() {
+            var idx = this.mail.from.indexOf('@')
+            var firstletterUppercase = this.mail.from.charAt(0).toUpperCase() + this.mail.from.slice(1, idx)
+            return firstletterUppercase
+        },
     },
     watch: {
     }
