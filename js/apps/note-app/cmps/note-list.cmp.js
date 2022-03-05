@@ -1,9 +1,11 @@
 import notePreview from "./note-preview.cmp.js";
+import noteFilter from "../cmps/note-filter.cmp.js";
 
 export default {
   props: ["notes"],
   template: `
 <section >
+  <note-filter @filtered="filtered"/>
   <div class="add-note flex evenly">
   <input v-model="note"   type="text" placeholder="What\`s on your mind..." ref="elInput"><button @click="addNote">note that</button><button @click="noteSelector('textNote')">note</button>
   <button @click="noteSelector('noteImg')">image</button><button @click="noteSelector('noteVideo')">video</button>
@@ -23,18 +25,23 @@ export default {
 `,
   components: {
     notePreview,
-    note: null,
+    noteFilter,
+    // note: null,
   },
   data() {
     return {
       color:'red',
-      selector: null
+      selector: null,
+      filterBy:'ALL'
     };
   },
   created() {},
   methods: {
     remove(id) {
       this.$emit("remove", id);
+    },
+    filtered(filter){
+      this.$emit('filtered',filter)
     },
     addNote() {
       this.$emit("add", this.note,this.selector);

@@ -1,21 +1,27 @@
 import { noteService } from "../service/note.service.js";
 import noteList from "../cmps/note-list.cmp.js";
+import noteFilter from "../cmps/note-filter.cmp.js";
 
 export default {
   template: `
   <note-app>
     <div class="main-note flex warp">
-     
-      <note-list :notes="notes" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" ></note-list>
+      <!-- <note-filter class="filter"/> -->
+      <note-list :notes="noteForDisplay" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter"></note-list>
     </div>
   </note-app>
 `,
   components: {
     noteList,
+    noteFilter,
   },
   data() {
     return {
       notes: null,
+      filterBy: {
+        searchKey: '',
+        label: 'All',
+      }
     };
   },
   created() {
@@ -30,6 +36,9 @@ export default {
         const idx = this.notes.findIndex((note) => note.id === id);
         this.notes.splice(idx, 1);
       });
+    },
+    setFilter(filter){
+        this.filterBy = filter
     },
     checkList(id,idx){
       noteService.changeTodoStatus(id,idx)
@@ -61,5 +70,16 @@ export default {
       noteService.changeNoteColor(currNote);
     },
   },
-  computed: {},
+  computed: {
+    noteForDisplay(){
+      if(this.filterBy.searchKey === '' && this.filterBy.label ==='All') return this.notes
+      if(this.filterBy.searchKey === '') {
+        return this.notes.filter(note => note.info.label === this.filterBy.label)
+      }
+      const regex = new RegExp(this.filterBy.searchKey, 'i')
+      return this.notes.filter(note => {
+        regex.test(note.info.txt)&& note.info.label === this.filterBy.label
+      })
+    }
+  },
 };
