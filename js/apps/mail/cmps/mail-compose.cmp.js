@@ -27,13 +27,14 @@ export default {
             }
         }
     },
-    created(){
+    created() {
         const id = this.$route.params.noteId
         noteService.get(id)
-        .then(note => {
-            // console.log(note);
-            this.newMail.body = note.info.txt
-        })
+            .then(note => {
+                // console.log(note);
+                if (!note) return
+                this.newMail.body = note.info.txt
+            })
     },
     methods: {
         saveMail() {
@@ -41,7 +42,7 @@ export default {
             if (!this.newMail.subject) alert('Are you sure you want to send this email without a subject?')
             this.$emit('add-new-mail', { ...this.newMail })
         },
-        noteId(){
+        noteId() {
             // return this.$route.params.noteId
         },
         deleteMail() {

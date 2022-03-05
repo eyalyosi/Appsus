@@ -1,6 +1,3 @@
-// TODO set mail send at
-//TODO button make unread in mail
-
 export default {
     props: ['mail'],
     template: `

@@ -5,9 +5,10 @@ export default {
             <div class="mail-show">
                 <div class="detail-header flex space">
                     <span class="detail-mail-subject">{{mail.subject}}</span>
+                    <router-link class="send-to-note":to="'/note/'+mail.id">Send to Note</router-link>
                     <button class="btn-delete" @click="remove(mail.id)"><img src="./png/006-delete.png" alt=""></button>
                 </div>
-                <h4><span>{{fromDisplay}}</span> - <span>{{mail.from}}</span></h4>
+                <h4 class="detail-from-h4"><span class="detail-from">{{fromDisplay}}</span>    <span><{{mail.from}}></span></h4>
                 <div class="mail-body">
                     {{mail.body}}
                 </div>

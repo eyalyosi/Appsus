@@ -89,7 +89,6 @@ export default {
             this.selectedMail = null
             this.showMails = true
             this.filterBy = filterBy
-            console.log(this.filterBy);
         },
         add(newMail) {
             mailService.addNewMail(newMail)
