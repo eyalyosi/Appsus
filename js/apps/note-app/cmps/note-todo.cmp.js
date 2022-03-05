@@ -3,10 +3,12 @@ export default {
 template:`
 <section>
     <div>
-        <!-- <button  @click="remove(cmp.id)">X</button> -->
-        <h4>{{cmp.info.label}}</h4><hr>
+       <div class="note-header"> <!-- <button  @click="remove(cmp.id)">X</button> -->
+        <h4>{{cmp.info.label}}</h4>
+        <img src="/imge/002-tack.png" ><hr>
        <ul class="todo-ul">
-            <div v-for="(todo,idx) in cmp.info.todo" class="todo-div flex"><li class="todo" :class="todo.isDone ? 'done' : ''" @click="checkList(cmp.id,idx)">{{todo.txt}} </li><button @click.stop="remove(cmp.id,todo)">X</button></div>
+       </div>   
+       <div v-for="(todo,idx) in cmp.info.todo" class="todo-div flex"><li class="todo" :class="todo.isDone ? 'done' : ''" @click="checkList(cmp.id,idx)">{{todo.txt}} </li><button @click.stop="remove(cmp.id,todo)">X</button></div>
        </ul>
     </div>
 </section>

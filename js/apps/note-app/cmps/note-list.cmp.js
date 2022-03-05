@@ -2,7 +2,7 @@ import notePreview from "./note-preview.cmp.js";
 import noteFilter from "../cmps/note-filter.cmp.js";
 
 export default {
-  props: ["notes"],
+  props: ["notes","pinned"],
   template: `
 <section >
   <note-filter @filtered="filtered"/>
@@ -13,7 +13,7 @@ export default {
   </div>  
   <h1>Notes</h1>
  <div class="note-list">
-            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" @copy="copy" />
+            <note-preview @color="noteColor" @check="check" @remove="remove" @removeTodo="removeTodo" :notes="notes" @copy="copy" :pinned="pinned"/>
             </div>
 </section>
 `,

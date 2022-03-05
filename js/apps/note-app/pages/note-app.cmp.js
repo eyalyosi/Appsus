@@ -7,7 +7,7 @@ export default {
   <note-app>
     <div class="main-note flex warp">
       <!-- <note-filter class="filter"/> -->
-      <note-list :notes="noteForDisplay" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter" @copy="copyNote"></note-list>
+      <note-list  :notes="noteForDisplay" :pinned="pininigNote" @check="checkList" @removeTodo="removeTodo" @color="noteColor" @add="addNote" @remove="removeNote" @filtered="setFilter" @copy="copyNote"></note-list>
     </div>
   </note-app>
 `,
@@ -75,6 +75,24 @@ export default {
     }
   },
   computed: {
+    pininigNote(){
+      var pin =[];
+      this.notes.forEach(note => {
+        if(note.isPinned){
+          console.log(note);
+          pin.push(note)
+        }
+      })
+      console.log(pin);
+      return pin
+      // return this.notes
+      // const newNote = JSON.parse(JSON.stringify(this.notes))
+      // console.log(newNote);
+      //  newNote.map(note => {
+      //     if(note.isPinned) return note
+      //     if(!note.isPinned) return 
+      //   })   
+      },
     noteForDisplay(){
       if(this.filterBy.searchKey === '' && this.filterBy.label ==='All') return this.notes
       if(this.filterBy.searchKey === '') {

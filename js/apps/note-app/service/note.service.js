@@ -67,73 +67,73 @@ function getNotes(){
     {
       type : 'textNote',
       id:"n101",
+      isPinned: false,
       info: {
         label: 'Note',
         txt: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, molestiae.',
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
     {
       type : 'textNote',
       id:"n102",
+      isPinned: false,
       info: {
         label: 'Note',
         txt: 't consectetur adipisicing elit. Sequi, molestiae.',
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
     {
       type : 'textNote',
       id:"n103",
+      isPinned: false,
       info: {
         label: 'Note',
         txt: ' adipisicing elit. Sequi, molestiae.',
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
     {
       type : 'noteTodo',
       id:"n104",
+      isPinned: true,
       info: {
         label: 'Todo',
         todo: [{txt:'eat',isDone: false},{txt:'take a shawer',isDone: false}],
         // todo: ['eat','take a shawer'],
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
     {
       type : 'noteTodo',
       id:"n105",
+      isPinned: true,
       info: {
         label: 'Todo',
         todo: [{txt:'finish the sprint',isDone: false},{txt:'love',isDone: false},{txt:'do something',isDone: false}],
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
     {
       type : 'noteVideo',
       id:"n106",
+      isPinned: false,
       info: {
         label: 'Video',
         url: 'https://www.youtube.com/watch?v=Su4Gv-cwpWI&list=RDSu4Gv-cwpWI&index=2',
         // url: 'watch?v=Su4Gv-cwpWI&list=RDSu4Gv-cwpWI&index=1',
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
     {
       type : 'noteImg',
       id:"n107",
+      isPinned: false,
       info: {
         label: 'Image',
         url: 'https://i.picsum.photos/id/234/200/300.jpg?hmac=KD9xFDCez7-lqgcMm-EEi7BtpClIdCzJS6YvFVyLiDs',
         color: 'rgb(246, 239, 239)',
-        isPinned: false,
       }
     },
 
@@ -160,11 +160,11 @@ function createNote(input ,type) {
 const note = {
   type,
   id: '',
+  isPinned:false,
   info: {
     // label:'Note',
     // txt,
     color:'rgb(246, 239, 239)',
-    isPinned:false
   }
 }
  switch (type) {
