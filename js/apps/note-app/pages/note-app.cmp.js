@@ -1,4 +1,5 @@
 import { noteService } from "../service/note.service.js";
+import { mailService } from '../../mail/service/mail.service.js'
 import noteList from "../cmps/note-list.cmp.js";
 import noteFilter from "../cmps/note-filter.cmp.js";
 
@@ -28,16 +29,23 @@ export default {
     noteService.getNotes().then((note) => {
       this.notes = note;
     });
+    const id = this.$route.params.mailId
+    mailService.get(id)
+      .then(mail => {
+        if (!mail) return
+        this.addNote(mail.body, 'textNote')
+        // this.newMail.body = note.info.txt
+      })
   },
   methods: {
-    setPining(note){
+    setPining(note) {
       note.isPinned = !note.isPinned
       noteService.update(note)
-      .then(Note=> {
-        log(Note)
-        const idx = this.notes.findIndex((note) => note.id === Note.id);
-        this.notes.splice(idx, 1,Note);
-      })
+        .then(Note => {
+          log(Note)
+          const idx = this.notes.findIndex((note) => note.id === Note.id);
+          this.notes.splice(idx, 1, Note);
+        })
     },
     removeNote(id) {
       noteService.remove(id).then((notes) => {
@@ -45,15 +53,15 @@ export default {
         this.notes.splice(idx, 1);
       });
     },
-    setFilter(filter){
-        this.filterBy = filter
+    setFilter(filter) {
+      this.filterBy = filter
     },
-    checkList(id,idx){
-      noteService.changeTodoStatus(id,idx)
-      .then(note => {
-        const Idx = this.notes.findIndex(Note => Note.id === id)
-        this.notes.splice(Idx, 1, note);
-      })
+    checkList(id, idx) {
+      noteService.changeTodoStatus(id, idx)
+        .then(note => {
+          const Idx = this.notes.findIndex(Note => Note.id === id)
+          this.notes.splice(Idx, 1, note);
+        })
     },
     removeTodo(id, todo) {
       noteService.removeTodo(id, todo).then((Note) => {
@@ -76,18 +84,18 @@ export default {
       currNote.info.color = color;
       noteService.changeNoteColor(currNote);
     },
-    copyNote(note){
-      const idx = this.notes.findIndex(Note => Note.id===note.id)
+    copyNote(note) {
+      const idx = this.notes.findIndex(Note => Note.id === note.id)
       noteService.copyNote(note).then((Note) => {
-        this.notes.splice(idx,0,Note);
+        this.notes.splice(idx, 0, Note);
       });
     }
   },
   computed: {
-    pininigNote(){
-      var pin =[];
+    pininigNote() {
+      var pin = [];
       this.notes.forEach(note => {
-        if(note.isPinned){
+        if (note.isPinned) {
           console.log(note);
           pin.push(note)
         }
@@ -101,22 +109,23 @@ export default {
       //     if(note.isPinned) return note
       //     if(!note.isPinned) return 
       //   })   
-      },
-    noteForDisplay(){
-      if(this.filterBy.searchKey === '' && this.filterBy.label ==='All') return this.notes
-      if(this.filterBy.searchKey === '') {
+    },
+    noteForDisplay() {
+      if (this.filterBy.searchKey === '' && this.filterBy.label === 'All') return this.notes
+      if (this.filterBy.searchKey === '') {
         return this.notes.filter(note => note.info.label === this.filterBy.label)
       }
       var regex = new RegExp(this.filterBy.searchKey, 'i')
-      if(this.filterBy.label==='All' ||this.filterBy.label==='Note') {
-      var display = this.notes.filter(note => {
-          return regex.test(note.info.txt)  })
-        } else if(this.filterBy.label==='Todo') {
+      if (this.filterBy.label === 'All' || this.filterBy.label === 'Note') {
+        var display = this.notes.filter(note => {
+          return regex.test(note.info.txt)
+        })
+      } else if (this.filterBy.label === 'Todo') {
         display = this.notes.filter(note => regex.test(note.info.todo[0].txt))
         //  todo a filter of note todo
-            
-        }
-      
+
+      }
+
       return display
     }
   },

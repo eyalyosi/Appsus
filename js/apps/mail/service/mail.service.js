@@ -23,7 +23,7 @@ function remove(mailId) {
 function get(mailId) {
     return storageService.get(STORAGE_KEY, mailId)
         .then(mail => {
-            return _setNextPrevMailId(mail)
+            return mail
         })
 }
 
