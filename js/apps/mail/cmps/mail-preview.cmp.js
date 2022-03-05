@@ -84,3 +84,15 @@ export default {
         }
     }
 }
+
+// .preview-container:hover .actions {
+//     opacity: 1;
+//   }
+  
+// .actions:hover {
+//     opacity: 1;
+//   }
+  
+// .action {
+//     opacity: 0
+// }

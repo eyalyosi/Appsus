@@ -17,6 +17,7 @@
 .read-and-delet {
   gap: 10px;
 }
+
 /* .single-mail-container {
   position: relative;
 } */
@@ -28,8 +29,8 @@
 /* .mail-title-subject-container {
   overflow: hidden;
 } */
-/* .body-span {
+.body-span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-} */
+}
