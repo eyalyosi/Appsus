@@ -1,10 +1,23 @@
 /* mail-details */
 
 .mail-show-container {
-    flex-grow: 1;
-    border: 1px solid black;
-  }
-  
-  .mail-body {
-    padding-left: 50px;
-  }
+  flex-grow: 1;
+  border: 1px solid black;
+}
+
+.mail-body {
+  padding-left: 50px;
+}
+
+.detail-header {
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+
+.detail-mail-subject {
+  font-size: 30px;
+}
+
+.btn-delete:hover {
+  cursor: pointer;
+}

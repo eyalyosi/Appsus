@@ -3,7 +3,7 @@
 }
 
 .isRead {
-  background-color: lightgrey;
+  background-color: rgba(211, 211, 211, 0.5);
 }
 
 .single-mail-container > * {
@@ -17,18 +17,43 @@
 .read-and-delet {
   gap: 10px;
 }
-/* .single-mail-container {
-  position: relative;
-} */
-/* .single-mail-container .mail-title-subject-container {
+
+.single-mail-container:hover .read-and-delet {
+  display: flex;
+}
+
+.read-and-delet:hover {
+  display: flex;
+}
+
+.read-and-delet {
+  display: none;
+}
+
+.date-container {
+  display: block;
+}
+
+.date-container:hover {
+  display: none;
+}
+
+.single-mail-container:hover .date-container {
+  display: none;
+}
+
+.body-span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .mail-preview-container .mail-title-subject-container {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 } */
-/* .mail-title-subject-container {
-  overflow: hidden;
-} */
-/* .body-span {
+
+/* .single-mail-container .mail-title-subject-container {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

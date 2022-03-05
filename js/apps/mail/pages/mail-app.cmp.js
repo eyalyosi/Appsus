@@ -120,7 +120,8 @@ export default {
     computed: {
         mailToDisplay() {
             if (!this.mails) return
-            else if (!this.filterBy || !this.filterBy.label && !this.filterBy.isSent) {
+            // else if (!this.filterBy || !this.filterBy.label && !this.filterBy.isSent) {
+            else if (!this.filterBy) {
                 return this.mails.filter((mail) => (!mail.isSent))
             }
             else if (this.filterBy.label === 'All') {
@@ -138,11 +139,10 @@ export default {
             else if (this.filterBy.isSent) {
                 return this.mails.filter((mail) => (mail.isSent))
             }
-            else if (this.filterBy.searchKey) {
-                const regex = new RegExp(this.filterBy.searchKey, 'i')
-                return this.mails.filter((mail) => (regex.test(mail.subject) || regex.test(mail.body) ||
-                    regex.test(mail.body) || regex.test(mail.to) || regex.test(mail.from)) && (!mail.isSent))
-            }
+            console.log(this.filterBy.searchKey);
+            const regex = new RegExp(this.filterBy.searchKey, 'i')
+            return this.mails.filter((mail) => (regex.test(mail.subject) || regex.test(mail.body) ||
+                regex.test(mail.body) || regex.test(mail.to) || regex.test(mail.from)) && (!mail.isSent))
         }
     },
     watch: {

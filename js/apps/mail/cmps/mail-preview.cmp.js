@@ -7,19 +7,17 @@ export default {
             <div class="single-mail-container flex space align" :class="unRead">
                 <div @click.stop="starMail" :title="titleStarred"><img :src="starForDisplay"></div>
                 <div class="mail-from" :class="isRead">
-                         {{fromToDisplay}}
+                         {{fromDisplay}}
                 </div >
-                <!-- <div class="mail-title-subject-container"> -->
                 <span class="mail-title-subject-container">
                     <span :class="isRead">{{mail.subject}} - </span>
                     <span class="body-span"> {{bodyText}}</span>
                 </span>
-                <!-- </div> -->
-                <div>{{dateToDisplay}}</div>
                 <div class="read-and-delet flex">
                     <div @click.stop="readMail" :title="titleRead"><img :src="readForDiaplay"></div>
                     <div @click.stop="deleteMail" title="Delete Mail"><img src="/png/006-delete.png" alt=""></div>
                 </div>
+                <div class="date-container">{{dateToDisplay}}</div>
             </div>      
     `,
     data() {
@@ -50,7 +48,7 @@ export default {
             if (this.mail.body.length > 50) return this.mail.body.substring(0, 50) + '...'
             else return this.mail.body
         },
-        fromToDisplay() {
+        fromDisplay() {
             var idx = this.mail.from.indexOf('@')
             var firstletterUppercase = this.mail.from.charAt(0).toUpperCase() + this.mail.from.slice(1, idx)
             return firstletterUppercase
@@ -84,3 +82,4 @@ export default {
         }
     }
 }
+
