@@ -9,7 +9,7 @@ export const noteService = {
   changeNoteColor,
   removeTodo,
   changeTodoStatus,
-
+  copyNote,
 };
 const KEY_NOTE = "notes";
 var gNotes = utilService.loadFromStorage(KEY_NOTE);
@@ -190,6 +190,12 @@ const note = {
      break;
  } 
 return storageService.post(KEY_NOTE,note)
+}
+
+function copyNote(note){
+  const newNote = JSON.parse(JSON.stringify(note))
+  newNote.id = ''
+  return storageService.post(KEY_NOTE,newNote)
 }
 
 function get(noteId) {
