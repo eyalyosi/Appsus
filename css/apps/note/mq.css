@@ -1,0 +1,18 @@
+@media (max-width: 650px) {
+.main-layout {
+    width: 100vw;
+    margin: 0;
+}
+.note-preview{
+    display: block;
+}
+
+.note-card{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+..main-note{
+    margin: 0 0 0;
+}
+}

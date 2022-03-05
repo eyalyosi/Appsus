@@ -20,13 +20,14 @@ export default {
   components: {
     notePreview,
     noteFilter,
-    // note: null,
+    
   },
   data() {
     return {
       color:'red',
       selector: null,
-      filterBy:'ALL'
+      filterBy:'ALL',
+      note: null,
     };
   },
   created() {},
@@ -44,6 +45,8 @@ this.$emit('pin',note)
       this.$emit('filtered',filter)
     },
     addNote() {
+      if(!this.note)return
+      if(!this.selector) this.selector = 'textNote'
       this.$emit("add", this.note,this.selector);
       this.$refs["elInput"].value = ''
       this.note = ''
@@ -58,6 +61,7 @@ this.$emit('pin',note)
       this.$emit('check',id,idx)
     },
     noteSelector(selector) {
+      console.log(selector);
           this.selector = selector
           switch (selector) {
             case 'textNote' :

@@ -96,11 +96,9 @@ export default {
       var pin = [];
       this.notes.forEach(note => {
         if (note.isPinned) {
-          console.log(note);
           pin.push(note)
         }
       })
-      console.log(pin);
       return pin
       // return this.notes
       // const newNote = JSON.parse(JSON.stringify(this.notes))

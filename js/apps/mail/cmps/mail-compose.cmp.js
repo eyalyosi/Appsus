@@ -30,7 +30,25 @@ export default {
         noteService.get(id)
             .then(note => {
                 if (!note) return
-                this.newMail.body = note.info.txt
+                switch (note.type) {
+                    case 'textNote' :
+                        this.newMail.body = note.info.txt
+                        break;
+                    case 'noteVideo' :
+                        this.newMail.body = note.info.url
+                        break;
+                    case 'noteImg' :
+                        this.newMail.body = note.info.url
+                        break;
+                    case 'noteTodo' :
+                        var str = 'todo:\n'
+                        note.info.todo.forEach(tod => {
+                            str += `${tod.txt}\n`
+                        })
+                        this.newMail.body = str
+                        break;
+                }
+                
             })
     },
     methods: {
