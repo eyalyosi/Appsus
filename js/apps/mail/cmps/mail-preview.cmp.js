@@ -46,9 +46,16 @@ export default {
             else return this.mail.body
         },
         fromDisplay() {
-            var idx = this.mail.from.indexOf('@')
-            var firstletterUppercase = this.mail.from.charAt(0).toUpperCase() + this.mail.from.slice(1, idx)
-            return firstletterUppercase
+            if (!this.mail.isSent) {
+                var idx = this.mail.from.indexOf('@')
+                var firstletterUppercase = this.mail.from.charAt(0).toUpperCase() + this.mail.from.slice(1, idx)
+                return firstletterUppercase
+            }
+            else {
+                var idx = this.mail.to.indexOf('@')
+                var firstletterUppercase = this.mail.to.charAt(0).toUpperCase() + this.mail.to.slice(1, idx)
+                return firstletterUppercase
+            }
         },
         dateToDisplay() {
             var sentAtDate = new Date(this.mail.sentAt)
