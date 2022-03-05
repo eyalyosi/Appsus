@@ -3,7 +3,7 @@ export default {
     props: ['unreadMailsCount'],
     template: `
        <section class="folder-list-container">
-           <div class="compose-mail" @click="onCompuse"><img src="/png/005-plus.png">Compose</div>
+           <div class="compose-mail" @click="onCompuse"><img src="/png/011-plus2.png"><span>Compose</span></div>
            <div class="folder-list">
                 <div @click="showInbox" class="inbox flex space align">
                     <div class="inbox-box"><img src="/png/002-download.png"> <span>Inbox</span>

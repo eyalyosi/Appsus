@@ -1,6 +1,6 @@
 /* Medium */
 
-@media (max-width: 950px) {
+@media (max-width: 980px) {
   .main-mail {
     flex-direction: column;
   }
