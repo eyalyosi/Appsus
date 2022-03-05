@@ -100,17 +100,10 @@ export default {
         }
       })
       return pin
-      // return this.notes
-      // const newNote = JSON.parse(JSON.stringify(this.notes))
-      // console.log(newNote);
-      //  newNote.map(note => {
-      //     if(note.isPinned) return note
-      //     if(!note.isPinned) return 
-      //   })   
     },
     noteForDisplay() {
       if (this.filterBy.searchKey === '' && this.filterBy.label === 'All') return this.notes
-      if (this.filterBy.searchKey === '') {
+      if (this.filterBy.searchKey === ''||this.filterBy.label === 'Video'||this.filterBy.label === 'Image') {
         return this.notes.filter(note => note.info.label === this.filterBy.label)
       }
       var regex = new RegExp(this.filterBy.searchKey, 'i')
@@ -119,6 +112,7 @@ export default {
           return regex.test(note.info.txt)
         })
       } else if (this.filterBy.label === 'Todo') {
+        // display = this.notes.filter(note => regex.test(note.info.todo[0].txt))
         display = this.notes.filter(note => regex.test(note.info.todo[0].txt))
         //  todo a filter of note todo
 
@@ -129,8 +123,3 @@ export default {
   },
 };
 
-// checkTodo(note){
-//   var regex = new RegExp(this.filterBy.searchKey, 'i')
-
-//   return
-// }       
