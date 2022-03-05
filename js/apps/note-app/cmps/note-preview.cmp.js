@@ -7,14 +7,14 @@ import noteVideo from './note-video.cmp.js'
 export default {
     props: ['notes'],
 template:`
+   <h1>pin</h1> <hr><hr>
 <section v-if="notes" class="note-preview flex wrap " >
-   
   <div v-for="cmp in notes"  :style="{backgroundColor:cmp.info.color}">
       <component :is="cmp.type" :cmp="cmp" @check="check" @removeTodo="removeTodo" ></component>        
         <button @click="remove(cmp.id)">X</button>
         <input v-model="color" type="color" @input="noteColor(cmp.id)">
         <button @click="copy(cmp)">copy</button>
-        <router-link :to="'/mail/'+cmp.id">lllll</router-link>
+        <router-link :to="'/mail/'+cmp.id">send to mail</router-link>
   </div>
 </section>
 `,
