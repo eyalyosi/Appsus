@@ -1,3 +1,5 @@
+import { noteService } from '../../note-app/service/note.service.js'
+
 // TODO text area
 
 export default {
@@ -25,11 +27,22 @@ export default {
             }
         }
     },
+    created(){
+        const id = this.$route.params.noteId
+        noteService.get(id)
+        .then(note => {
+            // console.log(note);
+            this.newMail.body = note.info.txt
+        })
+    },
     methods: {
         saveMail() {
             if (!this.newMail.mailTo) return
             if (!this.newMail.subject) alert('Are you sure you want to send this email without a subject?')
             this.$emit('add-new-mail', { ...this.newMail })
+        },
+        noteId(){
+            // return this.$route.params.noteId
         },
         deleteMail() {
 

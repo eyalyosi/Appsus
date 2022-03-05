@@ -193,8 +193,9 @@ return storageService.post(KEY_NOTE,note)
 }
 
 function copyNote(note){
-  note.id = ''
-  return storageService.post(KEY_NOTE,note)
+  const newNote = JSON.parse(JSON.stringify(note))
+  newNote.id = ''
+  return storageService.post(KEY_NOTE,newNote)
 }
 
 function get(noteId) {

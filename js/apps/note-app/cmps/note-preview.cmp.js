@@ -14,6 +14,7 @@ template:`
         <button @click="remove(cmp.id)">X</button>
         <input v-model="color" type="color" @input="noteColor(cmp.id)">
         <button @click="copy(cmp)">copy</button>
+        <router-link :to="'/mail/'+cmp.id">lllll</router-link>
   </div>
 </section>
 `,

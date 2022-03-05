@@ -27,7 +27,6 @@ export default {
   created() {
     noteService.getNotes().then((note) => {
       this.notes = note;
-      console.log(this.notes);
     });
   },
   methods: {
@@ -66,13 +65,12 @@ export default {
     noteColor(id, color) {
       const currNote = this.notes.find((note) => note.id === id);
       currNote.info.color = color;
-      console.log(currNote);
       noteService.changeNoteColor(currNote);
     },
     copyNote(note){
       const idx = this.notes.findIndex(Note => Note.id===note.id)
-      noteService.copyNote(note).then((note) => {
-        this.notes.splice(idx,0,note);
+      noteService.copyNote(note).then((Note) => {
+        this.notes.splice(idx,0,Note);
       });
     }
   },
